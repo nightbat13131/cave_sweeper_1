@@ -11,12 +11,20 @@ config_version=5
 [application]
 
 config/name="cave_sweeper_1"
+run/main_scene="uid://dslha7ak2smw6"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GUIDE="*uid://p2jwrgjcbexr"
+
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [editor]
 
