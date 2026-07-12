@@ -1,18 +1,42 @@
 [gd_resource type="Theme" format=3 uid="uid://dn3yu2mjxgflx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jif6"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rybf"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+border_color = Color(0.48570347, 0.48570353, 0.4857033, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ie7tj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jif6"]
+bg_color = Color(0.93081206, 0.7818005, 0.65948355, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0.72464263, 0.72464263, 0.7246424, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [resource]
+Button/font_sizes/font_size = 16
+Button/styles/hover = SubResource("StyleBoxFlat_3rybf")
+Button/styles/normal = SubResource("StyleBoxFlat_ie7tj")
 Button/styles/pressed = SubResource("StyleBoxFlat_6jif6")
 GridContainer/constants/h_separation = 0
 GridContainer/constants/v_separation = 0
-HBoxContainer/constants/separation = 0
+HBoxContainer/constants/separation = 2
 MarginContainer/constants/margin_bottom = 0
 MarginContainer/constants/margin_left = 0
 MarginContainer/constants/margin_right = 0

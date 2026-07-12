@@ -17,7 +17,7 @@ func _new_puzzle() -> void:
 	_clear_grids()
 	_populate_extra_walls()
 	_populate_danger()
-	Utilties.display_grid(get_cells_grid())
+	#Utilties.display_grid(get_cells_grid())
 
 func get_grid_size() -> Vector2i: return _inner_grid_size + (Vector2i.ONE*2)
 

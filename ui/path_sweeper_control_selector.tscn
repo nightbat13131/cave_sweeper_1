@@ -55,7 +55,7 @@ texture = SubResource("AtlasTexture_05s3y")
 stretch_mode = 4
 
 [node name="Control_mid2" type="Control" parent="HBoxContainer" unique_id=41810054]
-custom_minimum_size = Vector2(2, 32)
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 mouse_filter = 2
 
@@ -70,7 +70,7 @@ texture = SubResource("AtlasTexture_ucl1t")
 stretch_mode = 4
 
 [node name="Control_mid3" type="Control" parent="HBoxContainer" unique_id=1651149540]
-custom_minimum_size = Vector2(2, 32)
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 mouse_filter = 2
 

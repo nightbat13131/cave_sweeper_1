@@ -18,21 +18,23 @@ func _ready() -> void:
 
 func get_press_type() -> Utilties.PathSweeper_Alts: return _press_type
 
-func apply_mouse_mask(mask_bits: int) -> void:
-	if mask_bits & 1<<MOUSE_BUTTON_LEFT:
-		texture_rect_left.set_modulate(Color.WHITE)
-	if mask_bits & 1<<MOUSE_BUTTON_RIGHT:
-		texture_rect_right.set_modulate(Color.WHITE)
-	if mask_bits & 1<<MOUSE_BUTTON_MIDDLE:
-		texture_rect_mid.set_modulate(Color.WHITE)
+func apply_mouse_mask(mouse_mask: int) -> void:
+	match mouse_mask: 
+		MOUSE_BUTTON_LEFT:
+			texture_rect_left.set_modulate(Color.WHITE)
+		MOUSE_BUTTON_RIGHT:
+			texture_rect_right.set_modulate(Color.WHITE)
+		MOUSE_BUTTON_MIDDLE:
+			texture_rect_mid.set_modulate(Color.WHITE)
 
-func remove_mouse_mask(mask_bits: int) -> void:
-	if mask_bits & 1<<MOUSE_BUTTON_LEFT:
-		texture_rect_left.set_modulate(Color.TRANSPARENT)
-	if mask_bits & 1<<MOUSE_BUTTON_RIGHT:
-		texture_rect_right.set_modulate(Color.TRANSPARENT)
-	if mask_bits & 1<<MOUSE_BUTTON_MIDDLE:
-		texture_rect_mid.set_modulate(Color.TRANSPARENT)
+func remove_mouse_mask(mouse_mask: int) -> void:
+	match mouse_mask:
+		MOUSE_BUTTON_LEFT:
+			texture_rect_left.set_modulate(Color.TRANSPARENT)
+		MOUSE_BUTTON_RIGHT:
+			texture_rect_right.set_modulate(Color.TRANSPARENT)
+		MOUSE_BUTTON_MIDDLE:
+			texture_rect_mid.set_modulate(Color.TRANSPARENT)
 
-func _on_button_selected(_self: PressTypeButtonPathSwpeeper, mouse_bits: int) -> void: 
-	selected.emit(self, mouse_bits)
+func _on_button_selected(_self: PressTypeButtonPathSwpeeper, mouse_mask: int) -> void: 
+	selected.emit(self, mouse_mask)

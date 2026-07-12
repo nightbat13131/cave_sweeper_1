@@ -30,7 +30,7 @@ _tertiary_action = ExtResource("6_2otii")
 unique_name_in_owner = true
 z_index = 100
 z_as_relative = false
-position = Vector2(0, 24)
+position = Vector2(0, 16)
 script = ExtResource("5_pldbc")
 _tileset = ExtResource("6_pldbc")
 _dark_layers = NodePath("TileMapLayer_Darkness")
@@ -155,7 +155,7 @@ mouse_filter = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer" unique_id=420909133]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 4
 
 [node name="HSeparator3" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=1891563644]
 layout_mode = 2
@@ -200,7 +200,10 @@ size_flags_horizontal = 3
 
 [node name="ButtonNew" type="Button" parent="HBoxContainer/HBoxContainer2" unique_id=1432014774]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "New"
 
 [node name="HSeparator4" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=589073276]
@@ -209,8 +212,10 @@ size_flags_horizontal = 3
 
 [node name="ButtonNew2" type="Button" parent="HBoxContainer/HBoxContainer2" unique_id=1045663773]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(36, 0)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "?"
 
 [node name="HSeparator5" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=713492852]

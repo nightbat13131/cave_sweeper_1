@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/guide/plugin.cfg")
 [gui]
 
 theme/custom="uid://dn3yu2mjxgflx"
+theme/custom_font="uid://cvd7cjlt88hr1"
 
 [physics]
 
