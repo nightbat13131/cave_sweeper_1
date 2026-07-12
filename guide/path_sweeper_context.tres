@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cpplm41b5bt6m" path="res://addons/guide/guide_action_mapping.gd" id="1_62njh"]
 [ext_resource type="Script" uid="uid://dsa1dnifd6w32" path="res://addons/guide/guide_mapping_context.gd" id="2_3360y"]
-[ext_resource type="Resource" uid="uid://bad1ibu637cwg" path="res://sweeper_with_path/guide/primary_action.tres" id="2_e760v"]
+[ext_resource type="Resource" uid="uid://bad1ibu637cwg" path="res://guide/primary_action.tres" id="2_e760v"]
 [ext_resource type="Script" uid="uid://mtx1unc2aqn7" path="res://addons/guide/guide_input_mapping.gd" id="3_1gfqv"]
 [ext_resource type="Script" uid="uid://vgjlx6p007lp" path="res://addons/guide/inputs/guide_input_mouse_button.gd" id="4_nc0g0"]
 [ext_resource type="Script" uid="uid://bl8rjl4oaldje" path="res://addons/guide/modifiers/guide_modifier.gd" id="5_1qjtq"]
 [ext_resource type="Script" uid="uid://x74mnwgr08a7" path="res://addons/guide/triggers/guide_trigger.gd" id="6_erxsc"]
 [ext_resource type="Script" uid="uid://c76fmncyucwqc" path="res://addons/guide/triggers/guide_trigger_tap.gd" id="7_nc0g0"]
-[ext_resource type="Resource" uid="uid://crcu166hslp0a" path="res://sweeper_with_path/guide/secondary_action.tres" id="8_8sbbw"]
-[ext_resource type="Resource" uid="uid://kp5wknawsykj" path="res://sweeper_with_path/guide/tertiary_action.tres" id="9_1gfqv"]
+[ext_resource type="Resource" uid="uid://crcu166hslp0a" path="res://guide/secondary_action.tres" id="8_8sbbw"]
+[ext_resource type="Resource" uid="uid://kp5wknawsykj" path="res://guide/tertiary_action.tres" id="9_1gfqv"]
 
 [sub_resource type="Resource" id="Resource_jiwyu"]
 script = ExtResource("4_nc0g0")
