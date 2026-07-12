@@ -23,6 +23,7 @@ GUIDE="*uid://p2jwrgjcbexr"
 
 window/size/viewport_width=300
 window/size/viewport_height=240
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
@@ -45,5 +46,8 @@ theme/custom="uid://dn3yu2mjxgflx"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 environment/defaults/default_clear_color=Color(0.13333334, 0.1254902, 0.20392157, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

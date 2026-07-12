@@ -25,17 +25,15 @@ load_path = "res://.godot/imported/kenney_mouse.png-3733a1bde08323c0b3635a125f64
 atlas = SubResource("CompressedTexture2D_fkkbh")
 region = Rect2(18, 64, 12, 16)
 
-[node name="PathSweeperControlSelector" type="CenterContainer" unique_id=2058085671]
-custom_minimum_size = Vector2(64, 10)
-offset_right = 64.0
-offset_bottom = 40.0
-mouse_filter = 2
+[node name="PathSweeperControlSelector" type="MarginContainer" unique_id=631055010]
 script = ExtResource("1_ggttl")
 
 [node name="Button" type="Button" parent="." unique_id=680398274]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 icon = ExtResource("2_ucl1t")
 icon_alignment = 1
 script = ExtResource("3_qs2re")
@@ -57,7 +55,7 @@ texture = SubResource("AtlasTexture_05s3y")
 stretch_mode = 4
 
 [node name="Control_mid2" type="Control" parent="HBoxContainer" unique_id=41810054]
-custom_minimum_size = Vector2(2, 48)
+custom_minimum_size = Vector2(2, 32)
 layout_mode = 2
 mouse_filter = 2
 
@@ -72,7 +70,7 @@ texture = SubResource("AtlasTexture_ucl1t")
 stretch_mode = 4
 
 [node name="Control_mid3" type="Control" parent="HBoxContainer" unique_id=1651149540]
-custom_minimum_size = Vector2(2, 48)
+custom_minimum_size = Vector2(2, 32)
 layout_mode = 2
 mouse_filter = 2
 
