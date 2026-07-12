@@ -21,8 +21,8 @@ GUIDE="*uid://p2jwrgjcbexr"
 
 [display]
 
-window/size/viewport_width=600
-window/size/viewport_height=480
+window/size/viewport_width=300
+window/size/viewport_height=240
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
@@ -35,6 +35,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/guide/plugin.cfg")
 
+[gui]
+
+theme/custom="uid://dn3yu2mjxgflx"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -42,3 +46,4 @@ enabled=PackedStringArray("res://addons/guide/plugin.cfg")
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.13333334, 0.1254902, 0.20392157, 1)

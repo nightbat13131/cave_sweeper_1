@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://bad1ibu637cwg" path="res://guide/primary_action.tres" id="6_je411"]
 [ext_resource type="TileSet" uid="uid://218dl3hhakq3" path="res://sweeper_with_path/path_sweeper_tile_set_0.tres" id="6_pldbc"]
 [ext_resource type="Resource" uid="uid://crcu166hslp0a" path="res://guide/secondary_action.tres" id="7_p0pf2"]
-[ext_resource type="Theme" uid="uid://dn3yu2mjxgflx" path="res://sweeper_with_path/path_sweeper_theme.tres" id="8_ng3e6"]
+[ext_resource type="Theme" uid="uid://dn3yu2mjxgflx" path="res://architecture/path_sweeper_theme.tres" id="8_ng3e6"]
 [ext_resource type="Script" uid="uid://cxil5p7s8f0xt" path="res://sweeper_with_path/path_sweeper_mouse_helper.gd" id="8_rpm72"]
 [ext_resource type="Script" uid="uid://ce0bgs76k2piy" path="res://sweeper_with_path/score_holderpathsweeper.gd" id="10_kc2h5"]
 [ext_resource type="PackedScene" uid="uid://hrxddbbibipr" path="res://ui/path_sweeper_control_selector.tscn" id="11_6xpkf"]
@@ -32,7 +32,7 @@ _tertiary_action = ExtResource("6_2otii")
 unique_name_in_owner = true
 z_index = 100
 z_as_relative = false
-position = Vector2(0, 40)
+position = Vector2(0, 24)
 script = ExtResource("5_pldbc")
 _tileset = ExtResource("6_pldbc")
 _dark_layers = NodePath("TileMapLayer_Darkness")
