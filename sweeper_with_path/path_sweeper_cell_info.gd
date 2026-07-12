@@ -128,6 +128,11 @@ func _can_walk_to_here() -> bool:
 #region TileMapLayer Display
 
 func get_darkness() -> Vector2i: # over layer
+	## debug:
+	if is_door():
+		return _get_arrow_type()
+	
+	
 	if is_pressed():
 		return PathSweeper_TileManager.BLANK
 	
@@ -178,16 +183,20 @@ func _get_door_direciton() -> Vector2i:
 
 func _get_arrow_type() -> Vector2i:
 	match _get_door_direciton():
+		Vector2i.DOWN:
+			return PathSweeper_TileManager.ARROW_N
 		Vector2i.LEFT:
 			return PathSweeper_TileManager.ARROW_E
 		Vector2i.RIGHT:
 			return PathSweeper_TileManager.ARROW_W
-	return PathSweeper_TileManager.ARROW_N
+	return PathSweeper_TileManager.ARROW_S
 
 func _get_door_type() -> Vector2i:
 	match _get_door_direciton():
 		Vector2i.UP:
 			return PathSweeper_TileManager.DOOR_N
+		Vector2i.DOWN:
+			return PathSweeper_TileManager.DOOR_S
 		Vector2i.LEFT:
 			return PathSweeper_TileManager.DOOR_W
 		Vector2i.RIGHT:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PathSweeper" format=3 uid="uid://oymsf400fwq1"]
+
+[ext_resource type="Script" uid="uid://do225uhnv3rad" path="res://sweeper_with_path/path_sweeper.gd" id="1_rlpq2"]
+
+[resource]
+script = ExtResource("1_rlpq2")
+_inner_grid_size = Vector2i(4, 4)
+_danger_count = 0
+_extra_wall_count = 0
+metadata/_custom_type_script = "uid://do225uhnv3rad"

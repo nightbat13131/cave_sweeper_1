@@ -53,12 +53,3 @@ func request_restart() -> void:
 	_restart()
 
 func get_cells_grid() -> Array[Array] : return _cells_grid
-
-func get_cell_from_pos(pos: Vector2i) -> PuzzleCellInfo:
-	if pos.x < 0 or pos.y < 0:
-		return null
-	if pos.y >= _cells_grid.size():
-		return null
-	if pos.x >= _cells_grid[pos.y].size():
-		return null
-	return get_cells_grid()[pos.y][pos.x]

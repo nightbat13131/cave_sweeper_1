@@ -20,6 +20,7 @@ func new_game() -> void:
 	_loot_count = 0
 	_spray_count = 5
 	_lives = 3
+	_start_side = Vector2i.DOWN
 	new_puzzle()
 	changed.emit()
 

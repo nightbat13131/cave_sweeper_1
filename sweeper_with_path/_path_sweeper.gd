@@ -5,6 +5,7 @@ class_name PathSweeper_Inner extends PuzzleFoundation
 @export var _danger_count: int = 10
 @export var _extra_wall_count : int = 10
 @export var _danger_neighbors : int = 2
+@export var _start_side := Vector2i.DOWN
 
 func _get_results() -> Utilties.Results: return Utilties.Results.INPROGRESS
 
@@ -42,9 +43,64 @@ func _clear_grids() -> void:
 	_place_doors()
 
 func _place_doors() -> void: 
-	## enter always from the bottom
+	## enter from the start side _start_side
+	var rec := Rect2(Vector2i.ZERO, get_grid_size()-Vector2i.ONE)
+	var _start_pos = Vector2i.ZERO
+	var _end_pos = Vector2(1,0)
+	var sides = [Vector2i.DOWN, Vector2i.UP, Vector2i.LEFT, Vector2i.RIGHT]
+	match _start_side:
+		Vector2i.UP:
+			_start_pos.y = rec.position.y
+			_start_pos.x = range(1,rec.size.x).pick_random()
+			rec.position.y += floor(rec.size.y *.5)
+			rec.size.y -= rec.position.y
+			sides[sides.find(Vector2i.UP)]=Vector2i.DOWN
+		Vector2i.DOWN:
+			_start_pos.y = rec.end.y
+			_start_pos.x = range(1,rec.size.x).pick_random()
+			rec.size.y /= 2
+			sides[sides.find(Vector2i.DOWN)]=Vector2i.UP
+		Vector2i.LEFT:
+			_start_pos.x = rec.end.x
+			_start_pos.y = range(1,rec.size.y).pick_random()
+			rec.size.x /= 2
+			sides[sides.find(Vector2i.LEFT)]=Vector2i.RIGHT
+		Vector2i.RIGHT:
+			_start_pos.x = rec.position.x
+			_start_pos.y = range(1,rec.size.y).pick_random()
+			rec.position.x += floor(rec.size.x *.5)
+			rec.size.x -= rec.position.x
+			sides[sides.find(Vector2i.RIGHT)]=Vector2i.LEFT
+		
+	PathSweeperCellInfo.set_start(get_cell_from_pos(_start_pos))
+	
+	match sides.pick_random(): # sides.pick_random():
+		Vector2i.UP:
+			_end_pos.y = rec.position.y
+			_end_pos.x = rec.position.x +  range(1,rec.size.x).pick_random()
+			_start_side = Vector2i.DOWN
+		Vector2i.DOWN:
+			_end_pos.y = rec.end.y
+			_end_pos.x = rec.position.x +  range(1,rec.size.x).pick_random()
+			_start_side = Vector2i.UP
+		Vector2i.LEFT:
+			_end_pos.x = rec.end.x
+			_end_pos.y = rec.position.y +  range(1,rec.size.y).pick_random()
+			_start_side = Vector2i.RIGHT
+		Vector2i.RIGHT:
+			_end_pos.x = rec.position.x
+			_end_pos.y = rec.position.y +  range(1,rec.size.y).pick_random()
+			_start_side = Vector2i.LEFT
+			
+		
+	PathSweeperCellInfo.set_end(get_cell_from_pos(_end_pos))
+
+func _place_doors0():
 	var xs := range(1,get_grid_size().x - 1)
+	var ys := range(1,get_grid_size().x - 1)
 	xs.shuffle()
+	ys.shuffle()
+	
 	var start_x : int = xs.pop_back()
 	PathSweeperCellInfo.set_start(get_cells_grid()[get_grid_size().y-1][start_x])
 	var end := Vector2i.ONE
@@ -58,7 +114,7 @@ func _place_doors() -> void:
 		2: 
 			#else:
 			end.x = get_grid_size().x-1
-	end.y = range(1, get_grid_size().y/2).pick_random()
+	end.y = range(1, get_grid_size().y*.5).pick_random()
 	print(end)
 	
 	PathSweeperCellInfo.set_end(get_cells_grid()[end.y][end.x])
@@ -111,3 +167,8 @@ func __try_place_danger(cell: PathSweeperCellInfo) -> bool:
 		cell.set_is_danger(Utilties.PathSweeper_Alts.NA)
 		return false
 	return true
+
+func get_cell_from_pos(pos: Vector2i) -> PuzzleCellInfo:
+	if Rect2(Vector2i.ZERO, get_grid_size()).has_point(pos):
+		return get_cells_grid()[pos.y][pos.x]
+	return null

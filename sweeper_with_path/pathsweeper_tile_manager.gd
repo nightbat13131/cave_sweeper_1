@@ -23,8 +23,9 @@ const DOOR_E := Vector2i(6,2)
 const DOOR_W := Vector2i(6,3)
 
 const ARROW_N := Vector2i(16,0)
+const ARROW_S := Vector2i(16,1)
 const ARROW_E := Vector2i(16,2)
-const ARROW_W := Vector2i(16,1)
+const ARROW_W := Vector2i(16,3)
 
 const LOOT := Vector2i(9,0)
 const DANGER := Vector2i(8,0)
@@ -85,7 +86,7 @@ func _process(_delta: float) -> void: queue_redraw()
 
 func _draw() -> void:
 	var cell := get_mouse_cell()
-	if !_cell_in_use( cell ):
+	if !_floor_layers.get_used_rect().has_point(cell):
 		return
 
 	#draw_circle(cell * _req_size, 8, Color.BLACK, false, 2 ) #debug
@@ -95,7 +96,7 @@ func _draw() -> void:
 
 
 func __draw_req(cell: Vector2i) -> void:
-	if !_cell_in_use( cell ):
+	if !_floor_layers.get_used_rect().has_point(cell):
 		return
 	cell *= Vector2i(_req_size)
 	for pair in [
@@ -108,7 +109,7 @@ func __draw_req(cell: Vector2i) -> void:
 
 
 func _draw_corner(cell: Vector2i, direction: Vector2i) -> void: 
-	if !_cell_in_use(cell):
+	if !_floor_layers.get_used_rect().has_point(cell):
 		return
 	#draw_circle(cell * _req_size, 8, Color.ORANGE, false, 2 ) #debug
 	
@@ -124,24 +125,4 @@ func _draw_corner(cell: Vector2i, direction: Vector2i) -> void:
 		Utilties.COLOR_PATH_OUTER_CELL, 
 		2
 	)
-	
-	#draw_line( point_out, Vector2i(point_out.x, center.y) , Color.WHITE, 2 )
-	#draw_line( point_out, Vector2i(center.x, point_out.y),  Color.WHITE, 2 )
-	
-	#draw_line( point_a, point_b,   Color.WHITE, 2 )
-	#__draw_req(cell)
-	
-
-
-func _cell_in_use(cell: Vector2i) -> bool:
-	var point := _floor_layers.get_used_rect()
-	if cell.x < point.position.x:
-		return false
-	elif cell.x > point.end.x-1:
-		return false
-	elif cell.y < point.position.y:
-		return false
-	elif cell.y > point.end.y-1:
-		return false
-	return true
 	
