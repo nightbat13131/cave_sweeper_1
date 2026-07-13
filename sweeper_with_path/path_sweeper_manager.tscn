@@ -17,6 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://dw036jufvu3hr" path="res://ui/icon_repel.tres" id="13_2otii"]
 [ext_resource type="Texture2D" uid="uid://blo1eey7am57o" path="res://ui/icon_flag_danger.tres" id="14_ivpca"]
 [ext_resource type="Texture2D" uid="uid://xqhbb8ap6ii1" path="res://ui/icon_flag_safe.tres" id="15_6xpkf"]
+[ext_resource type="Texture2D" uid="uid://dwsq4dji3yuf6" path="res://assets/images/sprite_tileset.png" id="18_ng3e6"]
+[ext_resource type="Script" uid="uid://bnlnrpei8r0dj" path="res://architecture/settings/popup_button.gd" id="19_2otii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2otii"]
+atlas = ExtResource("18_ng3e6")
+region = Rect2(0, 224, 16, 16)
 
 [node name="PathSweeperManager" type="Node" unique_id=68120097]
 script = ExtResource("1_sebmf")
@@ -216,7 +222,9 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "?"
+icon = SubResource("AtlasTexture_2otii")
+script = ExtResource("19_2otii")
+popup_type = 1
 
 [node name="HSeparator5" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=713492852]
 layout_mode = 2

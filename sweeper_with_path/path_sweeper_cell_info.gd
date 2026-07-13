@@ -62,7 +62,6 @@ func _walk_into(puzzle: PathSweeper) -> void:
 		if _end == self:
 			puzzle.request_next_level()
 			return
-
 	if _has_flag():
 		if _flag == Utilties.PathSweeper_Alts.FLAG_DANGER:
 			return # this flag blocks walking here
@@ -128,14 +127,8 @@ func _can_walk_to_here() -> bool:
 #region TileMapLayer Display
 
 func get_darkness() -> Vector2i: # over layer
-	## debug:
-	if is_door():
-		return _get_arrow_type()
-	
-	
 	if is_pressed():
 		return PathSweeper_TileManager.BLANK
-	
 	if _can_walk_to_here():
 		return PathSweeper_TileManager.HALF_DARK
 	for each_n in get_map_neighbors():
@@ -204,14 +197,17 @@ func _get_door_type() -> Vector2i:
 	return PathSweeper_TileManager.DOOR_S
 
 func _get_wall_type() -> Vector2i:
-	if get_map_neighbors().size() <= 3: # corners
+	var neigh := get_map_neighbors()
+	if neigh.size() <= 3: # corners
 		return PathSweeper_TileManager.WALL_
 	elif _pos.x == 0:
 		return PathSweeper_TileManager.WALL_E
 	elif _pos.y == 0:
 		return PathSweeper_TileManager.WALL_S
-	elif _start.get_position().y == _pos.y: # while _start is always along the bottom 
-		return PathSweeper_TileManager.WALL_N
+	for each: PathSweeperCellInfo in neigh:
+		if !each.is_wall() and !each.is_door():
+			if each.get_position().x == get_position().x: # 
+				return PathSweeper_TileManager.WALL_N
 	return PathSweeper_TileManager.WALL_W
 
 #endregion

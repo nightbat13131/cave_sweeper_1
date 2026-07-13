@@ -95,31 +95,6 @@ func _place_doors() -> void:
 		
 	PathSweeperCellInfo.set_end(get_cell_from_pos(_end_pos))
 
-func _place_doors0():
-	var xs := range(1,get_grid_size().x - 1)
-	var ys := range(1,get_grid_size().x - 1)
-	xs.shuffle()
-	ys.shuffle()
-	
-	var start_x : int = xs.pop_back()
-	PathSweeperCellInfo.set_start(get_cells_grid()[get_grid_size().y-1][start_x])
-	var end := Vector2i.ONE
-	match [0,0,1,2].pick_random():
-		0: # back wall
-			PathSweeperCellInfo.set_end(get_cells_grid()[0][xs.pop_back()])
-			return
-		1: 
-			#if start_x > get_grid_size().x * .5:
-			end.x = 0
-		2: 
-			#else:
-			end.x = get_grid_size().x-1
-	end.y = range(1, get_grid_size().y*.5).pick_random()
-	print(end)
-	
-	PathSweeperCellInfo.set_end(get_cells_grid()[end.y][end.x])
-
-
 func _populate_extra_walls() -> void:
 	var canidates : Array[PathSweeperCellInfo]
 	for row : Array in get_cells_grid():

@@ -40,9 +40,10 @@ const FLAG_SAFE := Vector2i(10,0)
 @export var _floor_layers : TileMapLayer
 @export var _number_layers : TileMapLayer
 
-#var _width :int
+
 var _cells : Array[Array]
 var _req_size := Vector2i.ONE
+var _current_cell := Vector2i.ONE * -1
 
 func _ready() -> void:
 	set_z_index(100)
@@ -78,11 +79,14 @@ func _on_cell_update(cell: PathSweeperCellInfo) -> void:
 
 func get_mouse_cell() -> Vector2i: return _floor_layers.local_to_map(get_local_mouse_position())
 
-func _process(_delta: float) -> void: queue_redraw()
+func _process(_delta: float) -> void: 
+	if _current_cell != get_mouse_cell():
+		_on_cell_change()
 
-#func _get_ne() -> Vector2:
-	##print(_floor_layers.local_to_map(get_local_mouse_position()))
-	#return get_mouse_cell() * Vector2i(_req_size) # get_global_mouse_position() - get_global_mouse_position().posmodv(_req_size)
+func _on_cell_change() -> void:
+	_current_cell = get_mouse_cell()
+	queue_redraw()
+	
 
 func _draw() -> void:
 	var cell := get_mouse_cell()
@@ -107,7 +111,6 @@ func __draw_req(cell: Vector2i) -> void:
 			]:
 		draw_dashed_line(pair[0] * _req_size + cell, pair[1] *  _req_size + cell, Utilties.COLOR_PATH_CENTER_CELL, 5)
 
-
 func _draw_corner(cell: Vector2i, direction: Vector2i) -> void: 
 	if !_floor_layers.get_used_rect().has_point(cell):
 		return
@@ -125,4 +128,3 @@ func _draw_corner(cell: Vector2i, direction: Vector2i) -> void:
 		Utilties.COLOR_PATH_OUTER_CELL, 
 		2
 	)
-	

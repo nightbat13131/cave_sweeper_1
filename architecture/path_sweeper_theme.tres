@@ -29,15 +29,20 @@ expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1333h"]
+
 [resource]
 Button/font_sizes/font_size = 16
 Button/styles/hover = SubResource("StyleBoxFlat_3rybf")
 Button/styles/normal = SubResource("StyleBoxFlat_ie7tj")
 Button/styles/pressed = SubResource("StyleBoxFlat_6jif6")
-GridContainer/constants/h_separation = 0
-GridContainer/constants/v_separation = 0
+GridContainer/constants/h_separation = 2
+GridContainer/constants/v_separation = 2
 HBoxContainer/constants/separation = 2
 MarginContainer/constants/margin_bottom = 0
 MarginContainer/constants/margin_left = 0
 MarginContainer/constants/margin_right = 0
 MarginContainer/constants/margin_top = 0
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_1333h")
+TabButton/base_type = &"Button"
+VBoxContainer/constants/separation = 0

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c0kx7klqbyitt"]
+
+[ext_resource type="PackedScene" uid="uid://ds0oobphclf66" path="res://architecture/autoload.tscn" id="1_fvvr4"]
+[ext_resource type="PackedScene" uid="uid://dslha7ak2smw6" path="res://sweeper_with_path/path_sweeper_manager.tscn" id="2_2r24p"]
+
+[node name="GameRoot" type="Node" unique_id=1772608973]
+
+[node name="PathSweeperManager" parent="." unique_id=68120097 instance=ExtResource("2_2r24p")]
+
+[node name="AutoLoad" parent="." unique_id=972770045 instance=ExtResource("1_fvvr4")]
