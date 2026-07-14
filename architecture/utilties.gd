@@ -5,6 +5,14 @@ const COLOR_PATH_CENTER_CELL := COLOR_PATH_OUTER_CELL # Color(.3,.3,.3,.5)
 
 enum Popups {NA = 0, SOUND_SETTINGS = 1, HELP = 2}
 
+enum SFX { NA = 0, 
+	BUTTON_PRESS = 1,
+	FLAG_PLACED = 50, FLAG_REMOVED = 51,
+	
+	PICKUP_LOOT = 60, 
+	DIED = 100, HURT = 101, 
+	}
+
 enum Results {INPROGRESS = 0, WIN = 1, LOSS = 2}
 
 enum PathSweeper_Alts { MOVE = -1, REPELL = -2, FLAG_DANGER = -3, FLAG_SAFE = -4, # Used in UI, so don't change

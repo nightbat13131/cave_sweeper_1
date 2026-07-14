@@ -1,7 +1,5 @@
 class_name PathSweeperManager extends Node
 
-@onready var button_undo: Button = %ButtonUndo
-@onready var button_redo: Button = %ButtonRedo
 @onready var button_new: Button = %ButtonNew
 @onready var label_status: Label = %LabelStatus
 @onready var tile_manager: PathSweeper_TileManager = %TileManager
@@ -28,8 +26,6 @@ func _ready() -> void:
 	_puzzle.puzzle_generated.connect(_on_puzzle_generated)
 	_puzzle.changed.connect(_on_puzzle_change)
 	score_holder.set_puzzle_info(_puzzle)
-	button_undo.pressed.connect(_on_undo)
-	button_redo.pressed.connect(_on_redo)
 	button_new.pressed.connect(_on_new)
 	_on_new()
 	#prints(1<<1, 1<<2, 1<<3)

@@ -34,6 +34,11 @@ const REPELL_WASTED := Vector2i(14,1)
 const FLAG_DANGER := Vector2i(11,0)
 const FLAG_SAFE := Vector2i(10,0)
 
+
+@export_category("Sound")
+@export var _cell_change_sfx : AudioStream
+
+@export_category("TileMap")
 @export var _tileset : TileSet
 @export var _dark_layers : TileMapLayer
 @export var _mid_layers : TileMapLayer
@@ -81,14 +86,15 @@ func get_mouse_cell() -> Vector2i: return _floor_layers.local_to_map(get_local_m
 
 func _process(_delta: float) -> void: 
 	if _current_cell != get_mouse_cell():
-		_on_cell_change()
+		_current_cell = get_mouse_cell()
+		queue_redraw()
+		if _floor_layers.get_used_rect().has_point(_current_cell):
+			SoundManager.request_sfx(_cell_change_sfx)
 
-func _on_cell_change() -> void:
-	_current_cell = get_mouse_cell()
-	queue_redraw()
-	
 
 func _draw() -> void:
+	if PopupManager.is_open():
+		return
 	var cell := get_mouse_cell()
 	if !_floor_layers.get_used_rect().has_point(cell):
 		return
