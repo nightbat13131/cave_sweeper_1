@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dslha7ak2smw6"]
 
 [ext_resource type="Script" uid="uid://s4oiicecx5kk" path="res://sweeper_with_path/path_sweeper_manager.gd" id="1_sebmf"]
-[ext_resource type="Resource" uid="uid://oymsf400fwq1" path="res://layouts/med_debug_0_danger.tres" id="2_kc2h5"]
+[ext_resource type="Resource" uid="uid://crjwpnhnpf7hy" path="res://layouts/small_debug.tres" id="2_ivpca"]
 [ext_resource type="Resource" uid="uid://cq22jlaqyr2a" path="res://guide/path_sweeper_context.tres" id="5_awl1s"]
 [ext_resource type="Script" uid="uid://c8yyq1is1bnyy" path="res://sweeper_with_path/pathsweeper_tile_manager.gd" id="5_pldbc"]
 [ext_resource type="Resource" uid="uid://kp5wknawsykj" path="res://guide/tertiary_action.tres" id="6_2otii"]
 [ext_resource type="Resource" uid="uid://bad1ibu637cwg" path="res://guide/primary_action.tres" id="6_je411"]
 [ext_resource type="TileSet" uid="uid://218dl3hhakq3" path="res://sweeper_with_path/path_sweeper_tile_set_0.tres" id="6_pldbc"]
 [ext_resource type="Resource" uid="uid://crcu166hslp0a" path="res://guide/secondary_action.tres" id="7_p0pf2"]
-[ext_resource type="AudioStream" uid="uid://bu5a6gj12q8he" path="res://assets/audio/ui/kenney_rollover4.ogg" id="8_ivpca"]
+[ext_resource type="AudioStream" uid="uid://b3oqdsaknlnln" path="res://assets/audio/sfx/game/owlish_Cloth_04.wav" id="8_ivpca"]
 [ext_resource type="Theme" uid="uid://dn3yu2mjxgflx" path="res://architecture/path_sweeper_theme.tres" id="8_ng3e6"]
 [ext_resource type="Script" uid="uid://ce0bgs76k2piy" path="res://sweeper_with_path/score_holderpathsweeper.gd" id="10_kc2h5"]
 [ext_resource type="PackedScene" uid="uid://hrxddbbibipr" path="res://ui/path_sweeper_control_selector.tscn" id="11_6xpkf"]
@@ -27,7 +27,7 @@ region = Rect2(0, 224, 16, 16)
 
 [node name="PathSweeperManager" type="Node" unique_id=68120097]
 script = ExtResource("1_sebmf")
-_puzzle = ExtResource("2_kc2h5")
+_puzzle = ExtResource("2_ivpca")
 _context = ExtResource("5_awl1s")
 _primary_action = ExtResource("6_je411")
 _secondary_action = ExtResource("7_p0pf2")

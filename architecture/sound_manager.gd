@@ -3,13 +3,24 @@ class_name SoundManager extends Node
 @export_category("UI Sounds")
 @export var sound_sfx_changed : AudioStream 
 @export var button_pressed : AudioStream
-@export var button_toggled : AudioStream
+@export var button_hovered : AudioStream
+@export var screen_opening : AudioStream
+@export var screen_closing : AudioStream
+
+@export_category("GameControl Sounds")
+@export var control_pressed : AudioStream
+@export var control_hovered : AudioStream
+@export var new_floor_sfx : AudioStream
 
 @export_category("Player Sounds")
 @export var died_sfx : AudioStream
 @export var hurt_sfx : AudioStream
-#@export var sound_screen_opening : AudioStream
-#@export var sound_screen_closing : AudioStream
+@export var walk_path_sfx : AudioStream
+@export var walk_wall_sfx : AudioStream
+@export var use_spray_useful_sfx : AudioStream
+@export var use_spray_waste_sfx : AudioStream
+@export var gain_loot_sfx : AudioStream
+
 #@onready var mute_all: ButtonSelf = %MuteAll
 
 @onready var h_slider_master_volume: HSlider = %MasterSound
@@ -17,7 +28,9 @@ class_name SoundManager extends Node
 @onready var h_slider_sfx_volume: HSlider = %SFXSound
 @onready var h_sliders : Array[HSlider] = [h_slider_master_volume, h_slider_music_volume, h_slider_sfx_volume]
 
-@onready var audio_stream_player_bg_music: AudioStreamPlayer = %AudioStreamPlayer_BGMusic
+@onready var bg_music: AudioStreamPlayer = %AudioStreamPlayer_BGMusic_Playing
+@onready var bg_music_game_over: AudioStreamPlayer = %AudioStreamPlayer_BGMusic_GameOver
+
 @onready var sfx_players: Node = %SFXPlayers
 
 @onready var _master_index := AudioServer.get_bus_index(&"Master")
@@ -49,11 +62,8 @@ func _on_sfx_volume_change(new_percent: float) -> void:
 	AudioServer.set_bus_volume_db(_sfx_index, linear_to_db(new_percent))
 	SoundManager.request_sfx.bind(sound_sfx_changed).call_deferred()
 
-func _on_mute_change(is_mute: bool) -> void:
-	_pause_music(is_mute)
-	AudioServer.set_bus_mute(_master_index, is_mute)
+#func _on_mute_change(is_mute: bool) -> void: AudioServer.set_bus_mute(_master_index, is_mute)
 
-func _pause_music(_is_pause: bool = true) -> void: audio_stream_player_bg_music.set_playing(!_is_pause)
 
 static func request_sfx_via_enum(enum_: Utilties.SFX, pitch := 1.0) -> void:
 	if _current_manager:
@@ -63,8 +73,37 @@ static func request_sfx_via_enum(enum_: Utilties.SFX, pitch := 1.0) -> void:
 func _request_sfx_via_enum(enum_: Utilties.SFX, pitch : float) -> void:
 	var sound : AudioStream
 	match enum_:
-		Utilties.SFX.BUTTON_PRESS:
+		Utilties.SFX.BUTTON_PRESS_SETTINGS:
 			sound = button_pressed
+		Utilties.SFX.BUTTON_MOUSE_OVER_SETTINGS:
+			sound = button_hovered
+		
+		Utilties.SFX.BUTTON_PRESS_GAME_CONTROL:
+			sound = control_pressed
+		Utilties.SFX.BUTTON_MOUSE_OVER_GAME_CONTROL:
+			sound = control_hovered
+		
+		Utilties.SFX.CLIMB_DEEPER:
+			sound = new_floor_sfx
+		
+		Utilties.SFX.SPRAY_GOOD:
+			sound = use_spray_useful_sfx
+		Utilties.SFX.SPRAY_WASTED:
+			sound = use_spray_waste_sfx
+		
+		Utilties.SFX.PICKUP_LOOT:
+			sound = gain_loot_sfx
+		
+		Utilties.SFX.WALK_CLEAR:
+			sound = walk_path_sfx
+		Utilties.SFX.WALK_WALL:
+			sound = walk_wall_sfx
+		
+		Utilties.SFX.DIED:
+			sound = died_sfx
+		Utilties.SFX.HURT:
+			sound = hurt_sfx
+		
 		_:
 			prints("no sound enum found", enum_)
 			return
@@ -85,18 +124,56 @@ func _request_sfx(sound: AudioStream, pitch: float) -> void:
 	if target_player.is_inside_tree():
 		target_player.play()
 
-static func pitch_from_range(delta := 0.5) -> float: return randf_range(1.0- delta, 1.0 + delta)
+static func request_music(music_type: Utilties.MUSIC) -> void:
+	if _current_manager:
+		_current_manager._request_music(music_type)
+
+func _request_music(music_type: Utilties.MUSIC) -> void:
+	var current : AudioStreamPlayer
+	var next : AudioStreamPlayer
+	if music_type == Utilties.MUSIC.GAME_ACTIVE:
+		current = bg_music_game_over
+		next = bg_music
+	elif music_type == Utilties.MUSIC.GAME_OVER:
+		current = bg_music
+		next = bg_music_game_over
+	if current.is_playing(): # fade out
+		var current_tween = get_tree().create_tween()
+		current_tween.tween_method(
+		current.set_volume_db,
+		current.get_volume_db, #linear_to_db(0), 
+		-80.0 ,# linear_to_db(1.0), 
+		1.0
+		)
+		current_tween.tween_callback(current.stop)
+		pass
+	var next_tween := get_tree().create_tween()
+	next.set_volume_db(-80.0)
+	next.play()
+	next_tween.tween_method(
+		next.set_volume_db,
+		-80.0, #linear_to_db(0), 
+		0.0 ,# linear_to_db(1.0), 
+		1.0
+		)
+	
+	
+
+#static func pitch_from_range(delta := 0.5) -> float: return randf_range(1.0- delta, 1.0 + delta)
+
 
 func _set_values(data: SaveFileResource) -> void:
 	if data == null:
 		data = SaveFileResource.new()
 	#mute_all.set_pressed(data.sound_mute_all)
-	_on_mute_change(data.sound_mute_all)
+	#_on_mute_change(data.sound_mute_all)
 	h_slider_master_volume.set_value(data.sound_master)
 	h_slider_music_volume.set_value(data.sound_music)
 	## setting differetnly becuse the normal method plays a sound when the games loads
 	h_slider_sfx_volume.set_value_no_signal(data.sound_sfx) 
 	AudioServer.set_bus_volume_db(_sfx_index, linear_to_db(data.sound_sfx))
+
+
 
 #region SaveLoad
 

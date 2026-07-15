@@ -15,4 +15,8 @@ func set_press_type(press_type : Utilties.PathSweeper_Alts) -> void: _press_type
 func get_press_type() -> Utilties.PathSweeper_Alts: return _press_type
 
 func _on_pressed() -> void: 
+	SoundManager.request_sfx_via_enum(Utilties.SFX.BUTTON_PRESS_GAME_CONTROL)
 	selected.emit(self, _pressed_button_mask)
+
+func _on_mouse_entered() -> void:
+	SoundManager.request_sfx_via_enum(Utilties.SFX.BUTTON_MOUSE_OVER_GAME_CONTROL)

@@ -7,7 +7,6 @@ static var _end : PathSweeperCellInfo
 
 var _wall := Utilties.PathSweeper_Alts.NA : set = set_wall
 var _danger := Utilties.PathSweeper_Alts.NA : set = set_is_danger
-#var _block_danger := false 
 var _is_pressed := false : set = _set_is_pressed
 var _flag := Utilties.PathSweeper_Alts.NA
 var _loot := Utilties.PathSweeper_Alts.NA
@@ -30,7 +29,7 @@ func press(press_type: Utilties.PathSweeper_Alts, puzzle: PathSweeper) -> void:
 
 func _try_use_repell(puzzle: PathSweeper) -> void:
 	if _flag == Utilties.PathSweeper_Alts.FLAG_SAFE:
-		return ## marked as not needing repell and safe to walk here. Maybe trigger walk instead? 
+		return ## marked as not needing repell and safe to walk here. Maybe trigger walk instead? ## this flag is sence disabled from player use
 	if is_pressed() and !is_danger():
 		return
 	if puzzle.get_spray_count() <= 0:
@@ -42,6 +41,7 @@ func _try_use_repell(puzzle: PathSweeper) -> void:
 	if is_danger():
 		undo.add_do_method(set_is_danger.bind(Utilties.PathSweeper_Alts.REPELL_SUCCESS))
 		undo.add_do_method(_set_loot.bind(Utilties.PathSweeper_Alts.LOOT0))
+		SoundManager.request_sfx_via_enum(Utilties.SFX.SPRAY_GOOD)
 		undo.add_undo_method(set_is_danger.bind(_danger))
 		undo.add_undo_method(_set_loot.bind(_loot))
 		if _flag == Utilties.PathSweeper_Alts.FLAG_DANGER:
@@ -51,6 +51,7 @@ func _try_use_repell(puzzle: PathSweeper) -> void:
 		if !is_pressed():
 			undo.add_do_method(set_is_danger.bind(Utilties.PathSweeper_Alts.REPELL_WASTED))
 			undo.add_undo_method(set_is_danger.bind(_danger))
+			SoundManager.request_sfx_via_enum(Utilties.SFX.SPRAY_WASTED)
 	if !is_pressed():
 		undo.add_do_method(_set_is_pressed.bind(true))
 		undo.add_undo_method(_set_is_pressed.bind(false))
@@ -58,9 +59,11 @@ func _try_use_repell(puzzle: PathSweeper) -> void:
 	undo.add_undo_method(puzzle.change_spray.bind(1))
 
 func _walk_into(puzzle: PathSweeper) -> void:
+	var sound_played := false
 	if is_pressed():
 		if _end == self:
 			puzzle.request_next_level()
+			SoundManager.request_sfx_via_enum(Utilties.SFX.CLIMB_DEEPER)
 			return
 	if _has_flag():
 		if _flag == Utilties.PathSweeper_Alts.FLAG_DANGER:
@@ -74,13 +77,25 @@ func _walk_into(puzzle: PathSweeper) -> void:
 		puzzle.create_undo_redo_action()
 		undo.add_do_method(puzzle.change_health.bind(-1))
 		undo.add_undo_method(puzzle.change_health.bind(1))
+		if puzzle.get_health() == 1:
+			SoundManager.request_sfx_via_enum(Utilties.SFX.DIED)
+		else: 
+			SoundManager.request_sfx_via_enum(Utilties.SFX.HURT)
+		sound_played = true
 	if _has_flag():
-		puzzle.create_undo_redo_action()
-		undo.add_do_method(_set_flag.bind(Utilties.PathSweeper_Alts.NA))
-		undo.add_undo_method(_set_flag.bind(_flag))
+		if _flag == Utilties.PathSweeper_Alts.FLAG_SAFE:
+			puzzle.create_undo_redo_action()
+			undo.add_do_method(_set_flag.bind(Utilties.PathSweeper_Alts.NA))
+			undo.add_undo_method(_set_flag.bind(_flag))
 	puzzle.create_undo_redo_action()
 	undo.add_do_method(_set_is_pressed.bind(true))
 	undo.add_undo_method(_set_is_pressed.bind(false))
+	if sound_played:
+		return
+	if is_wall():
+		SoundManager.request_sfx_via_enum(Utilties.SFX.WALK_WALL)
+	else: 
+		SoundManager.request_sfx_via_enum(Utilties.SFX.WALK_CLEAR)
 
 func _toggle_flag(press_type: Utilties.PathSweeper_Alts, puzzle: PathSweeper) -> void:
 	if is_pressed():
@@ -129,8 +144,10 @@ func _can_walk_to_here() -> bool:
 func get_darkness() -> Vector2i: # over layer
 	if is_pressed():
 		return PathSweeper_TileManager.BLANK
-	if _can_walk_to_here():
+	if can_be_pressed(): 	
 		return PathSweeper_TileManager.HALF_DARK
+	#if _can_walk_to_here():
+	#	return PathSweeper_TileManager.HALF_DARK
 	for each_n in get_map_neighbors():
 		if each_n.is_pressed():
 			return PathSweeper_TileManager.MOSTLY_DARK
@@ -276,6 +293,11 @@ func is_pressed() -> bool:
 	if get_map_neighbors().has(_start):
 		return true
 	return false
+
+func can_be_pressed() -> bool: 
+	if is_pressed():
+		return false
+	return _can_walk_to_here()
 
 func _set_is_pressed(value: bool) -> void: 
 	_is_pressed = value

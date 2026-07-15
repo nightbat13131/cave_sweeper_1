@@ -58,6 +58,8 @@ func get_health() -> int: return _lives
 func change_health(delta: int) -> void:
 	_lives += delta
 	changed.emit()
+	if _lives <= 0:
+		SoundManager.request_music(Utilties.MUSIC.GAME_OVER)
 
 func get_depth() -> int: return _depth
 

@@ -10,8 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://t5ytw5gr5mly" path="res://ui/icon_close.tres" id="7_neqif"]
 [ext_resource type="Script" uid="uid://bnlnrpei8r0dj" path="res://architecture/settings/popup_button.gd" id="9_adebt"]
 [ext_resource type="Script" uid="uid://dsqrrpi6uclrs" path="res://architecture/sound_manager.gd" id="10_sn41r"]
-[ext_resource type="AudioStream" uid="uid://gw8uuemh53n5" path="res://assets/audio/ui/kenney_click1.ogg" id="11_7gcew"]
-[ext_resource type="AudioStream" uid="uid://gxe5wdo3yk3t" path="res://assets/audio/music/nuclear_cave.mp3" id="12_troal"]
+[ext_resource type="AudioStream" uid="uid://gw8uuemh53n5" path="res://assets/audio/sfx/ui/kenney_click1.ogg" id="11_7gcew"]
+[ext_resource type="AudioStream" uid="uid://ojhkd8kx5cuv" path="res://assets/audio/sfx/game/tinyworlds_die1.mp3" id="12_a1i2k"]
+[ext_resource type="AudioStream" uid="uid://blflv7hlk4fs7" path="res://assets/audio/sfx/game/kenney_switch6.ogg" id="12_p2m4e"]
+[ext_resource type="AudioStream" uid="uid://gxe5wdo3yk3t" path="res://assets/audio/music/hazematharry_nuclear_cave.mp3" id="12_troal"]
+[ext_resource type="AudioStream" uid="uid://cirqu7sfe5ku7" path="res://assets/audio/sfx/game/kenney_mouseclick1.ogg" id="12_x60cn"]
+[ext_resource type="AudioStream" uid="uid://kgniocyspccq" path="res://assets/audio/sfx/game/kenney_mouserelease1.ogg" id="13_g57wj"]
+[ext_resource type="AudioStream" uid="uid://grr4cvt325xh" path="res://assets/audio/sfx/game/tineyworlds_hit2.mp3" id="13_p2m4e"]
+[ext_resource type="Texture2D" uid="uid://rbtxkcub4rmm" path="res://ui/icon_master_sound.tres" id="13_wwstj"]
+[ext_resource type="Texture2D" uid="uid://cn83abayqy62b" path="res://ui/icon_sfx.tres" id="14_7afus"]
+[ext_resource type="AudioStream" uid="uid://dv27566y6j8wl" path="res://assets/audio/sfx/game/owlish_UI_028.wav" id="15_yyo23"]
+[ext_resource type="AudioStream" uid="uid://c65qtvivhdvkq" path="res://assets/audio/sfx/game/kenney_click2.ogg" id="17_eie3j"]
+[ext_resource type="AudioStream" uid="uid://cq13fmi2llr2i" path="res://assets/audio/sfx/game/owlish_Stationery_33.wav" id="17_j0vl0"]
+[ext_resource type="AudioStream" uid="uid://bxddk3seme75f" path="res://assets/audio/sfx/owlish_Camera_01.wav" id="18_kegiy"]
+[ext_resource type="AudioStream" uid="uid://baray5xxuhfog" path="res://assets/audio/sfx/game/owlish_Nasal_Spray.wav" id="18_ocfdq"]
+[ext_resource type="AudioStream" uid="uid://b2bav5yws5gvg" path="res://assets/audio/music/owlish_record_player_loop.wav" id="23_4ja5f"]
 
 [node name="AutoLoad" type="Node" unique_id=972770045]
 script = ExtResource("1_6gj0w")
@@ -124,10 +137,27 @@ size_flags_vertical = 3
 [node name="SoundManager" type="Node" parent="Control/SettingsPopups/VBoxContainer2/SoundSection" unique_id=665744398]
 script = ExtResource("10_sn41r")
 sound_sfx_changed = ExtResource("11_7gcew")
+button_hovered = ExtResource("12_x60cn")
+control_pressed = ExtResource("12_p2m4e")
+control_hovered = ExtResource("13_g57wj")
+new_floor_sfx = ExtResource("15_yyo23")
+died_sfx = ExtResource("12_a1i2k")
+hurt_sfx = ExtResource("13_p2m4e")
+walk_path_sfx = ExtResource("17_j0vl0")
+walk_wall_sfx = ExtResource("17_eie3j")
+use_spray_useful_sfx = ExtResource("18_ocfdq")
+use_spray_waste_sfx = ExtResource("18_kegiy")
 
-[node name="AudioStreamPlayer_BGMusic" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1539219263]
+[node name="AudioStreamPlayer_BGMusic_Playing" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1539219263]
 unique_name_in_owner = true
 stream = ExtResource("12_troal")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="AudioStreamPlayer_BGMusic_GameOver" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1167949444]
+unique_name_in_owner = true
+stream = ExtResource("23_4ja5f")
+volume_db = -80.0
 bus = &"Music"
 
 [node name="SFXPlayers" type="Node" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1009325245]
@@ -163,6 +193,7 @@ columns = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=1342131494]
 layout_mode = 2
+texture = ExtResource("13_wwstj")
 
 [node name="MasterSound" type="HSlider" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=1267835243]
 unique_name_in_owner = true
@@ -186,6 +217,7 @@ value = 0.8
 
 [node name="TextureRect2" type="TextureRect" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=761181845]
 layout_mode = 2
+texture = ExtResource("14_7afus")
 
 [node name="SFXSound" type="HSlider" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=554027945]
 unique_name_in_owner = true

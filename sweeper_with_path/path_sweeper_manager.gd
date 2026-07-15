@@ -23,11 +23,12 @@ static var _instance : PathSweeperManager
 func _ready() -> void:
 	_instance = self
 	assert(_puzzle)
-	_puzzle.puzzle_generated.connect(_on_puzzle_generated)
+	tile_manager.set_puzzle(_puzzle)
+	_puzzle.puzzle_generated.connect(_on_puzzle_change)
 	_puzzle.changed.connect(_on_puzzle_change)
 	score_holder.set_puzzle_info(_puzzle)
 	button_new.pressed.connect(_on_new)
-	_on_new()
+	_on_new.call_deferred()
 	#prints(1<<1, 1<<2, 1<<3)
 	if _context:
 		GUIDE.enable_mapping_context(_context)
@@ -38,21 +39,15 @@ func _ready() -> void:
 		if _tertiary_action:
 			_tertiary_action.triggered.connect(_on_press_action.bind( MOUSE_BUTTON_MIDDLE))
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if !event.is_pressed():
-			print(event)
-
 func _on_new() -> void: if _puzzle: 
+	SoundManager.request_music(Utilties.MUSIC.GAME_ACTIVE)
 	_puzzle.new_game() #new_puzzle()
 
 func _on_undo() -> void: if _puzzle: _puzzle.request_undo()
 
 func _on_redo() -> void: if _puzzle: _puzzle.request_redo()
 
-func _on_puzzle_generated() -> void: 
-	tile_manager.set_grid(_puzzle.get_cells_grid())
-	_on_puzzle_change()
+#func _on_puzzle_generated() -> void: _on_puzzle_change()
 
 func _on_press_action(mouse_mask: int) -> void:
 	var pos = tile_manager.get_mouse_cell()

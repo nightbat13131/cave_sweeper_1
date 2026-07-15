@@ -8,6 +8,7 @@ var _pressed_button_mask := 0
 
 func _ready() -> void:
 	pressed.connect(_on_pressed)
+	mouse_entered.connect(_on_mouse_entered)
 	var bits = 0
 	if _left:
 		bits = bits | MOUSE_BUTTON_MASK_LEFT
@@ -25,11 +26,13 @@ func _ready() -> void:
 
 @abstract func _on_pressed() -> void
 
+@abstract func _on_mouse_entered() -> void
+
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event is InputEventMouseButton:
 			match event.button_mask:
 				MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT:
 					_pressed_button_mask = event.button_mask
-				_: ## middle press was registring as a middle scoll mask instead of the expected mask
+				_: ## middle press was registring as a middle scoll mask instead of the expected MOUSE_BUTTON_MIDDLE mask
 					_pressed_button_mask = MOUSE_BUTTON_MIDDLE

@@ -46,24 +46,31 @@ const FLAG_SAFE := Vector2i(10,0)
 @export var _number_layers : TileMapLayer
 
 
-var _cells : Array[Array]
+#var _cells : Array[Array]
 var _req_size := Vector2i.ONE
 var _current_cell := Vector2i.ONE * -1
+var _puzzle: PathSweeper
 
 func _ready() -> void:
 	set_z_index(100)
 	_init_tilemaps()
 
-func set_grid(grid: Array) -> void:
-	_cells = grid
+func set_puzzle(puzzle: PathSweeper) -> void:
+	_puzzle = puzzle
+	_puzzle.puzzle_generated.connect(_on_puzzle_generated)
+
+func _on_puzzle_generated() -> void:
 	_clear_tilemaps()
-	for row in _cells:
+	for row in _puzzle.get_cells_grid(): # _cells:
 		for cell : PathSweeperCellInfo in row:
 			cell.updated.connect(_on_cell_update)
 			_floor_layers.set_cell(cell.get_position(), 0, FLOOR_TILE)
 			_on_cell_update(cell)
 
-func get_width() -> int: return _cells[0].size()
+func get_width() -> int: 
+	if _puzzle:
+		return _puzzle.get_grid_size().x #  _cells[0].size()
+	return 10
 
 func _init_tilemaps() -> void:
 	assert(_tileset and _dark_layers and _mid_layers and _floor_layers and _number_layers )
@@ -85,12 +92,13 @@ func _on_cell_update(cell: PathSweeperCellInfo) -> void:
 func get_mouse_cell() -> Vector2i: return _floor_layers.local_to_map(get_local_mouse_position())
 
 func _process(_delta: float) -> void: 
+	if PopupManager.is_open():
+		return
 	if _current_cell != get_mouse_cell():
 		_current_cell = get_mouse_cell()
 		queue_redraw()
 		if _floor_layers.get_used_rect().has_point(_current_cell):
-			SoundManager.request_sfx(_cell_change_sfx)
-
+			SoundManager.request_sfx(_cell_change_sfx, 1.0 - (_puzzle.get_depth() * .05) )
 
 func _draw() -> void:
 	if PopupManager.is_open():
@@ -103,7 +111,6 @@ func _draw() -> void:
 	__draw_req( cell )# + (_req_size *.5 ))
 	for direction in [Vector2i(-1,-1) , Vector2i(1,-1), Vector2i(1,1), Vector2i(-1,1), ]:
 		_draw_corner(cell + direction, direction)
-
 
 func __draw_req(cell: Vector2i) -> void:
 	if !_floor_layers.get_used_rect().has_point(cell):
