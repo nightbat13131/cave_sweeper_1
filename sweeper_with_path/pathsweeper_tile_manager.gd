@@ -35,9 +35,6 @@ const FLAG_DANGER := Vector2i(11,0)
 const FLAG_SAFE := Vector2i(10,0)
 
 
-@export_category("Sound")
-@export var _cell_change_sfx : AudioStream
-
 @export_category("TileMap")
 @export var _tileset : TileSet
 @export var _dark_layers : TileMapLayer
@@ -98,7 +95,7 @@ func _process(_delta: float) -> void:
 		_current_cell = get_mouse_cell()
 		queue_redraw()
 		if _floor_layers.get_used_rect().has_point(_current_cell):
-			SoundManager.request_sfx(_cell_change_sfx, 1.0 - (_puzzle.get_depth() * .05) )
+			SoundManager.request_sfx_via_enum(Utilties.SFX.HIGHLIGHTED_CELL_CHANGED, 1.0 - (_puzzle.get_depth() * .05) )
 
 func _draw() -> void:
 	if PopupManager.is_open():

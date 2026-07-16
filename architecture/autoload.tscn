@@ -15,16 +15,20 @@
 [ext_resource type="AudioStream" uid="uid://blflv7hlk4fs7" path="res://assets/audio/sfx/game/kenney_switch6.ogg" id="12_p2m4e"]
 [ext_resource type="AudioStream" uid="uid://gxe5wdo3yk3t" path="res://assets/audio/music/hazematharry_nuclear_cave.mp3" id="12_troal"]
 [ext_resource type="AudioStream" uid="uid://cirqu7sfe5ku7" path="res://assets/audio/sfx/game/kenney_mouseclick1.ogg" id="12_x60cn"]
+[ext_resource type="AudioStream" uid="uid://o4qls3763fps" path="res://assets/audio/sfx/ui/owlish_UI_004.wav" id="13_cct75"]
 [ext_resource type="AudioStream" uid="uid://kgniocyspccq" path="res://assets/audio/sfx/game/kenney_mouserelease1.ogg" id="13_g57wj"]
 [ext_resource type="AudioStream" uid="uid://grr4cvt325xh" path="res://assets/audio/sfx/game/tineyworlds_hit2.mp3" id="13_p2m4e"]
 [ext_resource type="Texture2D" uid="uid://rbtxkcub4rmm" path="res://ui/icon_master_sound.tres" id="13_wwstj"]
 [ext_resource type="Texture2D" uid="uid://cn83abayqy62b" path="res://ui/icon_sfx.tres" id="14_7afus"]
+[ext_resource type="AudioStream" uid="uid://blb38dtwcysh0" path="res://assets/audio/sfx/ui/owlish_UI_005.wav" id="14_qmqiv"]
 [ext_resource type="AudioStream" uid="uid://dv27566y6j8wl" path="res://assets/audio/sfx/game/owlish_UI_028.wav" id="15_yyo23"]
+[ext_resource type="AudioStream" uid="uid://b3oqdsaknlnln" path="res://assets/audio/sfx/game/owlish_Cloth_04.wav" id="16_t2dyq"]
 [ext_resource type="AudioStream" uid="uid://c65qtvivhdvkq" path="res://assets/audio/sfx/game/kenney_click2.ogg" id="17_eie3j"]
 [ext_resource type="AudioStream" uid="uid://cq13fmi2llr2i" path="res://assets/audio/sfx/game/owlish_Stationery_33.wav" id="17_j0vl0"]
 [ext_resource type="AudioStream" uid="uid://bxddk3seme75f" path="res://assets/audio/sfx/owlish_Camera_01.wav" id="18_kegiy"]
 [ext_resource type="AudioStream" uid="uid://baray5xxuhfog" path="res://assets/audio/sfx/game/owlish_Nasal_Spray.wav" id="18_ocfdq"]
 [ext_resource type="AudioStream" uid="uid://b2bav5yws5gvg" path="res://assets/audio/music/owlish_record_player_loop.wav" id="23_4ja5f"]
+[ext_resource type="AudioStream" uid="uid://4ge8evnbid4r" path="res://assets/audio/sfx/game/owlish_freakedbreath.wav" id="25_qmqiv"]
 
 [node name="AutoLoad" type="Node" unique_id=972770045]
 script = ExtResource("1_6gj0w")
@@ -138,15 +142,20 @@ size_flags_vertical = 3
 script = ExtResource("10_sn41r")
 sound_sfx_changed = ExtResource("11_7gcew")
 button_hovered = ExtResource("12_x60cn")
+screen_opening = ExtResource("13_cct75")
+screen_closing = ExtResource("14_qmqiv")
 control_pressed = ExtResource("12_p2m4e")
 control_hovered = ExtResource("13_g57wj")
 new_floor_sfx = ExtResource("15_yyo23")
+highlight_cell_change_sfx = ExtResource("16_t2dyq")
 died_sfx = ExtResource("12_a1i2k")
 hurt_sfx = ExtResource("13_p2m4e")
 walk_path_sfx = ExtResource("17_j0vl0")
 walk_wall_sfx = ExtResource("17_eie3j")
+found_exit_sfx = ExtResource("15_yyo23")
 use_spray_useful_sfx = ExtResource("18_ocfdq")
 use_spray_waste_sfx = ExtResource("18_kegiy")
+monster_attack_sfx = ExtResource("25_qmqiv")
 
 [node name="AudioStreamPlayer_BGMusic_Playing" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1539219263]
 unique_name_in_owner = true
@@ -179,6 +188,15 @@ bus = &"Effects"
 bus = &"Effects"
 
 [node name="AudioStreamPlayer_SFX5" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=428211998]
+bus = &"Effects"
+
+[node name="SFXPlayers_Cell" type="Node" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1940633946]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer_SFX0" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers_Cell" unique_id=1665882196]
+bus = &"Effects"
+
+[node name="AudioStreamPlayer_SFX1" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers_Cell" unique_id=1589695503]
 bus = &"Effects"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection" unique_id=1942737391]

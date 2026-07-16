@@ -16,9 +16,15 @@ static func is_open() -> bool:
 		return _instance.is_visible()
 	return false
 
-static func request_popup(popup_type: Utilties.Popups) -> void:
+static func request_popup(popup_type: Utilties.Popups, silent := false) -> void:
 	if _instance == null:
 		return
+	if !silent:
+		if is_open() and popup_type == Utilties.Popups.NA: ## closing window
+			SoundManager.request_sfx_via_enum(Utilties.SFX.SETTING_CLOSE)
+		elif !is_open() and popup_type != Utilties.Popups.NA: ## opening window when closed
+			SoundManager.request_sfx_via_enum(Utilties.SFX.SETTING_OPEN)
+		
 	_instance.set_visible( popup_type != Utilties.Popups.NA)
 	
 	_instance.sound_section.set_visible(popup_type == Utilties.Popups.SOUND_SETTINGS)
@@ -26,4 +32,3 @@ static func request_popup(popup_type: Utilties.Popups) -> void:
 	
 	_instance.how_to_play_section.set_visible(popup_type == Utilties.Popups.HELP)
 	_instance.help_tab_button.set_pressed_no_signal(popup_type == Utilties.Popups.HELP)
-	

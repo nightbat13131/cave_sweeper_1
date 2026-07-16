@@ -4,7 +4,7 @@ extends Node
 @export var _menu_toggle : GUIDEAction
 
 func  _ready() -> void:
-	PopupManager.request_popup(Utilties.Popups.NA)
+	PopupManager.request_popup(Utilties.Popups.NA, true)
 	if _general_mapping:
 		GUIDE.enable_mapping_context(_general_mapping)
 		if _menu_toggle:
