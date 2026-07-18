@@ -5,6 +5,8 @@ class_name PathSweeperManager extends Node
 @onready var tile_manager: PathSweeper_TileManager = %TileManager
 @onready var score_holder: ScoreHolder_PathSweeper = %ScoreHolder
 @onready var path_sweeper_control_manager: PathSweeperControlManager = %PathSweeperControlManager
+@onready var game_over_screen: PanelContainer = %GameOverScreen
+
 
 @export var _puzzle: PathSweeper
 
@@ -25,11 +27,11 @@ func _ready() -> void:
 	tile_manager.set_puzzle(_puzzle)
 	_puzzle.puzzle_generated.connect(_on_puzzle_change)
 	_puzzle.changed.connect(_on_puzzle_change)
+	_puzzle.puzzle_complete.connect(_on_game_over)
 	score_holder.set_puzzle_info(_puzzle)
 	button_new.pressed.connect(_on_new_press)
 	button_new.mouse_entered.connect(_on_new_hover)
 	_on_new.call_deferred()
-	#prints(1<<1, 1<<2, 1<<3)
 	if _context:
 		GUIDE.enable_mapping_context(_context)
 		if _primary_action:
@@ -46,9 +48,11 @@ func _on_new_press() -> void:
 	_on_new()
 
 func _on_new() -> void: if _puzzle: 
+	game_over_screen.hide()
 	SoundManager.request_music(Utilties.MUSIC.GAME_ACTIVE)
-	SoundManager.request_sfx_via_enum(Utilties.SFX.BUTTON_PRESS_SETTINGS)
-	_puzzle.new_game() #new_puzzle()
+	_puzzle.new_game() 
+
+func _on_game_over(_value: int) -> void: game_over_screen.show()
 
 func _on_press_action(mouse_mask: int) -> void:
 	var pos = tile_manager.get_mouse_cell()
@@ -59,5 +63,7 @@ func _get_press_type(mouse_mask: int) -> Utilties.PathSweeper_Alts:
 		return path_sweeper_control_manager.get_press_type(mouse_mask)
 	return Utilties.PathSweeper_Alts.NA
 
-func _on_puzzle_change() -> void:
-	label_status.set_text(_puzzle.get_status_text())
+func _on_puzzle_change() -> void: label_status.set_text(_puzzle.get_status_text())
+
+static func get_game_results() -> String:
+	return "not connected"

@@ -34,12 +34,12 @@
 [ext_resource type="AudioStream" uid="uid://fq8wankypj6y" path="res://assets/audio/sfx/game/rubberduck_alien_08.ogg" id="26_y0pg3"]
 [ext_resource type="AudioStream" uid="uid://dey05xfpl1jc1" path="res://assets/audio/sfx/game/rubberduck_alien_07.ogg" id="27_y0pg3"]
 
-[node name="AutoLoad" type="Node" unique_id=972770045]
+[node name="Overlay" type="Node" unique_id=972770045]
 script = ExtResource("1_6gj0w")
 _general_mapping = ExtResource("2_v3ko5")
 _menu_toggle = ExtResource("3_sn41r")
 
-[node name="Control" type="Control" parent="." unique_id=437547792]
+[node name="Popups" type="Control" parent="." unique_id=437547792]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_78xy6")
 
-[node name="Panel" type="Panel" parent="Control" unique_id=1587240406]
+[node name="Panel" type="Panel" parent="Popups" unique_id=1587240406]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +56,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsPopups" type="MarginContainer" parent="Control" unique_id=735322509]
+[node name="Popups" type="MarginContainer" parent="Popups" unique_id=735322509]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,30 +65,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/SettingsPopups" unique_id=1859501802]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Popups/Popups" unique_id=1859501802]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Control/SettingsPopups/VBoxContainer2" unique_id=543306199]
+[node name="VBoxContainer" type="HBoxContainer" parent="Popups/Popups/VBoxContainer2" unique_id=543306199]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer" unique_id=1495931654]
+[node name="VBoxContainer" type="VBoxContainer" parent="Popups/Popups/VBoxContainer2/VBoxContainer" unique_id=1495931654]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer" unique_id=1537233910]
+[node name="Control" type="Control" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer" unique_id=1537233910]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer" unique_id=604623839]
+[node name="HBoxContainer" type="HBoxContainer" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer" unique_id=604623839]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Space" type="Control" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1323088644]
+[node name="Space" type="Control" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1323088644]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="SoundTab" type="Button" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1355122661]
+[node name="SoundTab" type="Button" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1355122661]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -100,7 +102,7 @@ icon_alignment = 1
 script = ExtResource("9_adebt")
 popup_type = 1
 
-[node name="HelpTabButton" type="Button" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=219322498]
+[node name="HelpTabButton" type="Button" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=219322498]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -112,37 +114,37 @@ icon_alignment = 1
 script = ExtResource("9_adebt")
 popup_type = 2
 
-[node name="SpaceBig" type="Control" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=511262149]
+[node name="SpaceBig" type="Control" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=511262149]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer" unique_id=33382142]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Popups/Popups/VBoxContainer2/VBoxContainer" unique_id=33382142]
 layout_mode = 2
 
-[node name="Space4" type="Control" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=679059558]
+[node name="Space4" type="Control" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=679059558]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CloseButton" type="Button" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=26826121]
+[node name="CloseButton" type="Button" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=26826121]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 icon = ExtResource("7_neqif")
 icon_alignment = 1
 script = ExtResource("9_adebt")
 
-[node name="Space3" type="Control" parent="Control/SettingsPopups/VBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=1445837723]
+[node name="Space3" type="Control" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer2" unique_id=1445837723]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SoundSection" type="PanelContainer" parent="Control/SettingsPopups/VBoxContainer2" unique_id=1554852027]
+[node name="SoundSection" type="PanelContainer" parent="Popups/Popups/VBoxContainer2" unique_id=1554852027]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SoundManager" type="Node" parent="Control/SettingsPopups/VBoxContainer2/SoundSection" unique_id=665744398]
+[node name="SoundManager" type="Node" parent="Popups/Popups/VBoxContainer2/SoundSection" unique_id=665744398]
 script = ExtResource("10_sn41r")
 sound_sfx_changed = ExtResource("11_7gcew")
 button_pressed = ExtResource("12_pgolx")
@@ -164,100 +166,103 @@ gain_loot_sfx = ExtResource("25_1cfn8")
 monster_attack_sfx = ExtResource("26_y0pg3")
 monster_die_sfx = ExtResource("27_y0pg3")
 
-[node name="AudioStreamPlayer_BGMusic_Playing" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1539219263]
+[node name="AudioStreamPlayer_BGMusic_Playing" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager" unique_id=1539219263]
 unique_name_in_owner = true
 stream = ExtResource("12_troal")
 volume_db = -80.0
 bus = &"Music"
 
-[node name="AudioStreamPlayer_BGMusic_GameOver" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1167949444]
+[node name="AudioStreamPlayer_BGMusic_GameOver" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager" unique_id=1167949444]
 unique_name_in_owner = true
 stream = ExtResource("23_4ja5f")
 volume_db = -80.0
 bus = &"Music"
 
-[node name="SFXPlayers" type="Node" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1009325245]
+[node name="SFXPlayers" type="Node" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager" unique_id=1009325245]
 unique_name_in_owner = true
 
-[node name="AudioStreamPlayer_SFX0" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=1557305010]
+[node name="AudioStreamPlayer_SFX0" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=1557305010]
 bus = &"Effects"
 
-[node name="AudioStreamPlayer_SFX1" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=936714215]
+[node name="AudioStreamPlayer_SFX1" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=936714215]
 bus = &"Effects"
 
-[node name="AudioStreamPlayer_SFX2" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=1176057295]
+[node name="AudioStreamPlayer_SFX2" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=1176057295]
 bus = &"Effects"
 
-[node name="AudioStreamPlayer_SFX3" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=1133223347]
+[node name="AudioStreamPlayer_SFX3" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=1133223347]
 bus = &"Effects"
 
-[node name="AudioStreamPlayer_SFX4" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=369231270]
+[node name="AudioStreamPlayer_SFX4" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=369231270]
 bus = &"Effects"
 
-[node name="AudioStreamPlayer_SFX5" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=428211998]
+[node name="AudioStreamPlayer_SFX5" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers" unique_id=428211998]
 bus = &"Effects"
 
-[node name="SFXPlayers_Cell" type="Node" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager" unique_id=1940633946]
+[node name="SFXPlayers_Cell" type="Node" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager" unique_id=1940633946]
 unique_name_in_owner = true
 
-[node name="AudioStreamPlayer_SFX0" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers_Cell" unique_id=1665882196]
+[node name="AudioStreamPlayer_SFX0" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers_Cell" unique_id=1665882196]
 bus = &"Effects"
 
-[node name="AudioStreamPlayer_SFX1" type="AudioStreamPlayer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers_Cell" unique_id=1589695503]
+[node name="AudioStreamPlayer_SFX1" type="AudioStreamPlayer" parent="Popups/Popups/VBoxContainer2/SoundSection/SoundManager/SFXPlayers_Cell" unique_id=1589695503]
 bus = &"Effects"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection" unique_id=1942737391]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Popups/Popups/VBoxContainer2/SoundSection" unique_id=1942737391]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="GridContainer" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2" unique_id=637191768]
+[node name="VBoxContainer" type="GridContainer" parent="Popups/Popups/VBoxContainer2/SoundSection/VBoxContainer2" unique_id=637191768]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=1342131494]
+[node name="TextureRect" type="TextureRect" parent="Popups/Popups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=1342131494]
 layout_mode = 2
 texture = ExtResource("13_wwstj")
 
-[node name="MasterSound" type="HSlider" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=1267835243]
+[node name="MasterSound" type="HSlider" parent="Popups/Popups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=1267835243]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
-value = 0.8
+value = 0.5
 
-[node name="TextureRect3" type="TextureRect" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=442306918]
+[node name="TextureRect3" type="TextureRect" parent="Popups/Popups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=442306918]
 layout_mode = 2
 texture = ExtResource("5_neqif")
 
-[node name="MusicSound" type="HSlider" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=452557566]
+[node name="MusicSound" type="HSlider" parent="Popups/Popups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=452557566]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 0.8
 
-[node name="TextureRect2" type="TextureRect" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=761181845]
+[node name="TextureRect2" type="TextureRect" parent="Popups/Popups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=761181845]
 layout_mode = 2
 texture = ExtResource("14_7afus")
 
-[node name="SFXSound" type="HSlider" parent="Control/SettingsPopups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=554027945]
+[node name="SFXSound" type="HSlider" parent="Popups/Popups/VBoxContainer2/SoundSection/VBoxContainer2/VBoxContainer" unique_id=554027945]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
-value = 0.8
+value = 0.6
 
-[node name="HowToPlaySection" type="PanelContainer" parent="Control/SettingsPopups/VBoxContainer2" unique_id=803918357]
+[node name="HowToPlaySection" type="PanelContainer" parent="Popups/Popups/VBoxContainer2" unique_id=803918357]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/SettingsPopups/VBoxContainer2/HowToPlaySection" unique_id=1256804394]
+[node name="Label" type="Label" parent="Popups/Popups/VBoxContainer2/HowToPlaySection" unique_id=1256804394]
 layout_mode = 2
 text = "tesxt"

@@ -32,3 +32,6 @@ static func request_popup(popup_type: Utilties.Popups, silent := false) -> void:
 	
 	_instance.how_to_play_section.set_visible(popup_type == Utilties.Popups.HELP)
 	_instance.help_tab_button.set_pressed_no_signal(popup_type == Utilties.Popups.HELP)
+
+func game_over() -> void:
+	pass

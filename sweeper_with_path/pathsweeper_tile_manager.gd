@@ -91,6 +91,7 @@ func get_mouse_cell() -> Vector2i: return _floor_layers.local_to_map(get_local_m
 func _process(_delta: float) -> void: 
 	if PopupManager.is_open():
 		return
+
 	if _current_cell != get_mouse_cell():
 		_current_cell = get_mouse_cell()
 		queue_redraw()
@@ -99,6 +100,8 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if PopupManager.is_open():
+		return
+	if _puzzle._get_results() != Utilties.Results.INPROGRESS:
 		return
 	var cell := get_mouse_cell()
 	if !_floor_layers.get_used_rect().has_point(cell):

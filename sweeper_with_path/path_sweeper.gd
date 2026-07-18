@@ -60,6 +60,7 @@ func change_health(delta: int) -> void:
 	changed.emit()
 	if _lives <= 0:
 		SoundManager.request_music(Utilties.MUSIC.GAME_OVER)
+		puzzle_complete.emit(Utilties.Results.LOSS)
 
 func get_depth() -> int: return _depth
 

@@ -87,7 +87,7 @@ layout_mode = 2
 alignment = 1
 script = ExtResource("10_kc2h5")
 
-[node name="HSeparator4" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=637312102]
+[node name="HSeparator4" type="Control" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=117630223]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -105,6 +105,10 @@ texture = ExtResource("11_ivpca")
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("11_ivpca")
+
+[node name="HSeparator3" type="Control" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=2028382639]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TextureRect_repel1" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1662728412]
 unique_name_in_owner = true
@@ -131,7 +135,7 @@ unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("13_2otii")
 
-[node name="HSeparator3" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1015801442]
+[node name="HSeparator7" type="Control" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=333763586]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -140,7 +144,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Depth: 0"
 
-[node name="HSeparator6" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1565190815]
+[node name="HSeparator6" type="Control" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=343314449]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -149,7 +153,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Loot: 0"
 
-[node name="HSeparator5" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=618941997]
+[node name="HSeparator5" type="Control" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1383826830]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -171,7 +175,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HSeparator3" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1891563644]
+[node name="Control2" type="Control" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1638936348]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -213,21 +217,10 @@ visible = false
 layout_mode = 2
 text = "Secondary"
 
-[node name="HSeparator2" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=904180363]
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1402173643]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="ButtonNew" type="Button" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1432014774]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "New"
-
-[node name="HSeparator4" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=589073276]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
 
 [node name="ButtonNew2" type="Button" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1045663773]
 unique_name_in_owner = true
@@ -240,6 +233,41 @@ icon_alignment = 1
 script = ExtResource("19_2otii")
 popup_type = 1
 
-[node name="HSeparator5" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=713492852]
+[node name="Control3" type="Control" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1277539160]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="GameOverScreen" type="PanelContainer" parent="." unique_id=310077021]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -22.0
+offset_right = 26.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverScreen" unique_id=672231275]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/MarginContainer" unique_id=537429274]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="GameOverScreen/MarginContainer/VBoxContainer" unique_id=1364174007]
+layout_mode = 2
+text = "Game Over"
+
+[node name="ButtonNew" type="Button" parent="GameOverScreen/MarginContainer/VBoxContainer" unique_id=1432014774]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "New"
