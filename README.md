@@ -17,8 +17,10 @@ Music:
 - Nuclear Cave (Loop) from Hazmat Harry at https://opengameart.org/content/nuclear-cave-loop License: Creative Commons Zero
 
 SFX: 
-- Hit and death sounds from Author TinyWorlds on https://opengameart.org/content/5-hit-sounds-dying, Licence CC0
-- 202 More Sound Effects from OwlishMedia at https://opengameart.org/content/202-more-sound-effects Licence CCO
+- TinyWorlds on https://opengameart.org/content/5-hit-sounds-dying, Licence CC0
+- OwlishMedia at https://opengameart.org/content/202-more-sound-effects Licence CCO
+- Orsi on https://opengameart.org/content/unleeched-sound-effects-pack, License CC0
+- RubberDuck on https://opengameart.org/users/rubberduck, License CC0
 
 Some resources by  Kenney Vleugels (Kenney.nl) at www.kenney.nl under the License: (Creative Commons Zero, CC0) including but not limited to: 
 - Font package

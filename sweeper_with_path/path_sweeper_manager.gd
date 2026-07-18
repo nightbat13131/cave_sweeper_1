@@ -4,8 +4,7 @@ class_name PathSweeperManager extends Node
 @onready var label_status: Label = %LabelStatus
 @onready var tile_manager: PathSweeper_TileManager = %TileManager
 @onready var score_holder: ScoreHolder_PathSweeper = %ScoreHolder
-@onready var path_sweeper_control_manager: PathSweeperControlManager = $HBoxContainer/HBoxContainer2/PathSweeperControlManager
-
+@onready var path_sweeper_control_manager: PathSweeperControlManager = %PathSweeperControlManager
 
 @export var _puzzle: PathSweeper
 
@@ -27,7 +26,8 @@ func _ready() -> void:
 	_puzzle.puzzle_generated.connect(_on_puzzle_change)
 	_puzzle.changed.connect(_on_puzzle_change)
 	score_holder.set_puzzle_info(_puzzle)
-	button_new.pressed.connect(_on_new)
+	button_new.pressed.connect(_on_new_press)
+	button_new.mouse_entered.connect(_on_new_hover)
 	_on_new.call_deferred()
 	#prints(1<<1, 1<<2, 1<<3)
 	if _context:
@@ -39,15 +39,16 @@ func _ready() -> void:
 		if _tertiary_action:
 			_tertiary_action.triggered.connect(_on_press_action.bind( MOUSE_BUTTON_MIDDLE))
 
+func _on_new_hover() -> void: SoundManager.request_sfx_via_enum(Utilties.SFX.BUTTON_MOUSE_OVER_SETTINGS)
+
+func _on_new_press() -> void:
+	SoundManager.request_sfx_via_enum(Utilties.SFX.BUTTON_PRESS_SETTINGS)
+	_on_new()
+
 func _on_new() -> void: if _puzzle: 
 	SoundManager.request_music(Utilties.MUSIC.GAME_ACTIVE)
+	SoundManager.request_sfx_via_enum(Utilties.SFX.BUTTON_PRESS_SETTINGS)
 	_puzzle.new_game() #new_puzzle()
-
-func _on_undo() -> void: if _puzzle: _puzzle.request_undo()
-
-func _on_redo() -> void: if _puzzle: _puzzle.request_redo()
-
-#func _on_puzzle_generated() -> void: _on_puzzle_change()
 
 func _on_press_action(mouse_mask: int) -> void:
 	var pos = tile_manager.get_mouse_cell()

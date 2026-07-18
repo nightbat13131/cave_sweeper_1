@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://4ge8evnbid4r"
-path="res://.godot/imported/owlish_freakedbreath.wav-0a6c3281bb3c7884406e6ccf114e5dcd.sample"
+path="res://.godot/imported/owlish_freakedbreath.wav-45c93779b8cd02bcbb48df6aa5d0a630.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/game/owlish_freakedbreath.wav"
-dest_files=["res://.godot/imported/owlish_freakedbreath.wav-0a6c3281bb3c7884406e6ccf114e5dcd.sample"]
+source_file="res://assets/audio/sfx/owlish_freakedbreath.wav"
+dest_files=["res://.godot/imported/owlish_freakedbreath.wav-45c93779b8cd02bcbb48df6aa5d0a630.sample"]
 
 [params]
 

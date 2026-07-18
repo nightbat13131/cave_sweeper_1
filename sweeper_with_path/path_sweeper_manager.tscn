@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dslha7ak2smw6"]
 
 [ext_resource type="Script" uid="uid://s4oiicecx5kk" path="res://sweeper_with_path/path_sweeper_manager.gd" id="1_sebmf"]
-[ext_resource type="Resource" uid="uid://crjwpnhnpf7hy" path="res://layouts/small_debug.tres" id="2_ivpca"]
+[ext_resource type="Resource" uid="uid://c32qmyvvdf5jx" path="res://layouts/narrow_top_bottom.tres" id="2_2otii"]
 [ext_resource type="Resource" uid="uid://cq22jlaqyr2a" path="res://guide/path_sweeper_context.tres" id="5_awl1s"]
 [ext_resource type="Script" uid="uid://c8yyq1is1bnyy" path="res://sweeper_with_path/pathsweeper_tile_manager.gd" id="5_pldbc"]
 [ext_resource type="Resource" uid="uid://kp5wknawsykj" path="res://guide/tertiary_action.tres" id="6_2otii"]
@@ -26,7 +26,7 @@ region = Rect2(0, 224, 16, 16)
 
 [node name="PathSweeperManager" type="Node" unique_id=68120097]
 script = ExtResource("1_sebmf")
-_puzzle = ExtResource("2_ivpca")
+_puzzle = ExtResource("2_2otii")
 _context = ExtResource("5_awl1s")
 _primary_action = ExtResource("6_je411")
 _secondary_action = ExtResource("7_p0pf2")
@@ -36,7 +36,7 @@ _tertiary_action = ExtResource("6_2otii")
 unique_name_in_owner = true
 z_index = 100
 z_as_relative = false
-position = Vector2(0, 16)
+position = Vector2(0, 15)
 script = ExtResource("5_pldbc")
 _tileset = ExtResource("6_pldbc")
 _dark_layers = NodePath("TileMapLayer_Darkness")
@@ -74,67 +74,86 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_ng3e6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=632038211]
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=142520523]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer2" unique_id=632038211]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScoreHolder" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=314231594]
+[node name="ScoreHolder" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/VBoxContainer" unique_id=314231594]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 script = ExtResource("10_kc2h5")
 
-[node name="LabelLoot" type="Label" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=1423696547]
-unique_name_in_owner = true
+[node name="HSeparator4" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=637312102]
 layout_mode = 2
-text = "Loot: 0"
+size_flags_horizontal = 3
 
-[node name="TextureRect_hp1" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=1872364451]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("11_ivpca")
-
-[node name="TextureRect_hp2" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=384475036]
+[node name="TextureRect_hp1" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1872364451]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("11_ivpca")
 
-[node name="TextureRect_hp3" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=1514650160]
+[node name="TextureRect_hp2" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=384475036]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("11_ivpca")
 
-[node name="TextureRect_repel1" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=1662728412]
+[node name="TextureRect_hp3" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1514650160]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("11_ivpca")
+
+[node name="TextureRect_repel1" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1662728412]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("13_2otii")
 
-[node name="TextureRect_repel2" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=1241897510]
+[node name="TextureRect_repel2" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1241897510]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("13_2otii")
 
-[node name="TextureRect_repel3" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=247723793]
+[node name="TextureRect_repel3" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=247723793]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("13_2otii")
 
-[node name="TextureRect_repel4" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=568164545]
+[node name="TextureRect_repel4" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=568164545]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("13_2otii")
 
-[node name="TextureRect_repel5" type="TextureRect" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=1958749608]
+[node name="TextureRect_repel5" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1958749608]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("13_2otii")
 
-[node name="LabelDepth" type="Label" parent="HBoxContainer/VBoxContainer/ScoreHolder" unique_id=1245636909]
+[node name="HSeparator3" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1015801442]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelDepth" type="Label" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1245636909]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Depth: 0"
 
-[node name="LabelStatus" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=2086898603]
+[node name="HSeparator6" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1565190815]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelLoot" type="Label" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1423696547]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Loot: 0"
+
+[node name="HSeparator5" type="VSeparator" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=618941997]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelStatus" type="Label" parent="HBoxContainer/PanelContainer2/VBoxContainer" unique_id=2086898603]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -145,15 +164,19 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer" unique_id=420909133]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=816201757]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/PanelContainer" unique_id=420909133]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HSeparator3" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=1891563644]
+[node name="HSeparator3" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1891563644]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PathSweeperControlManager" type="HBoxContainer" parent="HBoxContainer/HBoxContainer2" unique_id=615141864 node_paths=PackedStringArray("_active_primary", "_active_secondary", "_active_tertiary")]
+[node name="PathSweeperControlManager" type="HBoxContainer" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=615141864 node_paths=PackedStringArray("_active_primary", "_active_secondary", "_active_tertiary")]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 script = ExtResource("11_ppvb5")
@@ -161,36 +184,40 @@ _active_primary = NodePath("PathSweeperControlSelector")
 _active_secondary = NodePath("PathSweeperControlSelector3")
 _active_tertiary = NodePath("PathSweeperControlSelector2")
 
-[node name="PathSweeperControlSelector" parent="HBoxContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1630876070 instance=ExtResource("11_6xpkf")]
+[node name="PathSweeperControlSelector" parent="HBoxContainer/PanelContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1630876070 instance=ExtResource("11_6xpkf")]
 layout_mode = 2
+tooltip_text = "Try Walk"
 _icon = ExtResource("11_ng3e6")
 
-[node name="PathSweeperControlSelector2" parent="HBoxContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1137907689 instance=ExtResource("11_6xpkf")]
+[node name="PathSweeperControlSelector2" parent="HBoxContainer/PanelContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1137907689 instance=ExtResource("11_6xpkf")]
 layout_mode = 2
+tooltip_text = "Anti-Monster Spray"
 _press_type = -2
 _icon = ExtResource("13_2otii")
 
-[node name="PathSweeperControlSelector3" parent="HBoxContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1125346843 instance=ExtResource("11_6xpkf")]
+[node name="PathSweeperControlSelector3" parent="HBoxContainer/PanelContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1125346843 instance=ExtResource("11_6xpkf")]
 layout_mode = 2
+tooltip_text = "Mark Danger"
 _press_type = -3
 _icon = ExtResource("14_ivpca")
 
-[node name="PathSweeperControlSelector4" parent="HBoxContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1332477885 instance=ExtResource("11_6xpkf")]
+[node name="PathSweeperControlSelector4" parent="HBoxContainer/PanelContainer/HBoxContainer2/PathSweeperControlManager" unique_id=1332477885 instance=ExtResource("11_6xpkf")]
 visible = false
 layout_mode = 2
+tooltip_text = "Mark Safe"
 _press_type = -4
 _icon = ExtResource("15_6xpkf")
 
-[node name="Label2" type="Label" parent="HBoxContainer/HBoxContainer2" unique_id=1098845690]
+[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1098845690]
 visible = false
 layout_mode = 2
 text = "Secondary"
 
-[node name="HSeparator2" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=904180363]
+[node name="HSeparator2" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=904180363]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ButtonNew" type="Button" parent="HBoxContainer/HBoxContainer2" unique_id=1432014774]
+[node name="ButtonNew" type="Button" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1432014774]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
@@ -198,11 +225,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "New"
 
-[node name="HSeparator4" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=589073276]
+[node name="HSeparator4" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=589073276]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ButtonNew2" type="Button" parent="HBoxContainer/HBoxContainer2" unique_id=1045663773]
+[node name="ButtonNew2" type="Button" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1045663773]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -213,6 +240,6 @@ icon_alignment = 1
 script = ExtResource("19_2otii")
 popup_type = 1
 
-[node name="HSeparator5" type="VSeparator" parent="HBoxContainer/HBoxContainer2" unique_id=713492852]
+[node name="HSeparator5" type="VSeparator" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=713492852]
 layout_mode = 2
 size_flags_horizontal = 3

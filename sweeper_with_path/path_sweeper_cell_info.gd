@@ -31,7 +31,7 @@ func _try_use_repell(puzzle: PathSweeper) -> void:
 	if _flag == Utilties.PathSweeper_Alts.FLAG_SAFE:
 		return ## marked as not needing repell and safe to walk here. Maybe trigger walk instead? ## this flag is sence disabled from player use
 	if is_pressed() and !is_danger():
-		return
+		return # not going to deal extra damange for an already revealed danger
 	if puzzle.get_spray_count() <= 0:
 		return
 	elif !_can_walk_to_here():
@@ -42,6 +42,7 @@ func _try_use_repell(puzzle: PathSweeper) -> void:
 		undo.add_do_method(set_is_danger.bind(Utilties.PathSweeper_Alts.REPELL_SUCCESS))
 		undo.add_do_method(_set_loot.bind(Utilties.PathSweeper_Alts.LOOT0))
 		SoundManager.request_sfx_via_enum(Utilties.SFX.SPRAY_GOOD)
+		SoundManager.request_sfx_via_enum(Utilties.SFX.DANFER_MOSTER_DIED, 1.0, .5)
 		undo.add_undo_method(set_is_danger.bind(_danger))
 		undo.add_undo_method(_set_loot.bind(_loot))
 		if _flag == Utilties.PathSweeper_Alts.FLAG_DANGER:
@@ -79,9 +80,9 @@ func _walk_into(puzzle: PathSweeper) -> void:
 		undo.add_undo_method(puzzle.change_health.bind(1))
 		SoundManager.request_sfx_via_enum(Utilties.SFX.DANGER_MONSTER_ATTACK)
 		if puzzle.get_health() == 1:
-			SoundManager.request_sfx_via_enum(Utilties.SFX.DIED, 1.0, .5)
+			SoundManager.request_sfx_via_enum(Utilties.SFX.DIED, 1.0, .3)
 		else: 
-			SoundManager.request_sfx_via_enum(Utilties.SFX.HURT, 1.0, .5)
+			SoundManager.request_sfx_via_enum(Utilties.SFX.HURT, 1.0, .3)
 		sound_played = true
 	if _has_flag():
 		if _flag == Utilties.PathSweeper_Alts.FLAG_SAFE:
@@ -93,7 +94,9 @@ func _walk_into(puzzle: PathSweeper) -> void:
 	undo.add_undo_method(_set_is_pressed.bind(false))
 	if sound_played:
 		return
-	if is_wall():
+	if _end == self:
+		SoundManager.request_sfx_via_enum(Utilties.SFX.FOUND_EXIT)
+	elif is_wall():
 		SoundManager.request_sfx_via_enum(Utilties.SFX.WALK_WALL)
 	else: 
 		SoundManager.request_sfx_via_enum(Utilties.SFX.WALK_CLEAR)
@@ -113,6 +116,7 @@ func _do_looting(puzzle: PathSweeper) -> void:
 	var undo : UndoRedo =puzzle.create_undo_redo_action()
 	undo.add_do_method(_set_loot.bind(Utilties.PathSweeper_Alts.NA))
 	undo.add_undo_method(_set_loot.bind(_loot))
+	SoundManager.request_sfx_via_enum(Utilties.SFX.PICKUP_LOOT)
 	undo.add_do_method(puzzle.set_loot_count.bind(puzzle.get_loot_count() + 1) )
 	undo.add_undo_method(puzzle.set_loot_count.bind(puzzle.get_loot_count()) )
 

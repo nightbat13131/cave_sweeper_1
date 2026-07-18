@@ -10,7 +10,17 @@ func _ready() -> void:
 		set_toggle_mode(true)
 	set_pressed_no_signal(get_press_type() == Utilties.PathSweeper_Alts.MOVE)
 
-func set_press_type(press_type : Utilties.PathSweeper_Alts) -> void: _press_type = press_type
+func set_press_type(press_type : Utilties.PathSweeper_Alts) -> void:
+	_press_type = press_type
+	match _press_type:
+		Utilties.PathSweeper_Alts.MOVE:
+			set_tooltip_text("Move")
+		Utilties.PathSweeper_Alts.REPELL:
+			set_tooltip_text("Anti-Monster Spray")
+		Utilties.PathSweeper_Alts.FLAG_DANGER:
+			set_tooltip_text("Mark Dangerous")
+		Utilties.PathSweeper_Alts.FLAG_SAFE:
+			set_tooltip_text("Mark Safe")
 
 func get_press_type() -> Utilties.PathSweeper_Alts: return _press_type
 

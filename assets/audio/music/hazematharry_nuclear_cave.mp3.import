@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/hazematharry_nuclear_cave.mp3-23c0c72c0e50489
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

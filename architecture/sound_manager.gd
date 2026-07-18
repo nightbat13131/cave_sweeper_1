@@ -115,6 +115,8 @@ func _request_sfx_via_enum(enum_: Utilties.SFX, pitch : float) -> void:
 			sound = walk_path_sfx
 		Utilties.SFX.WALK_WALL:
 			sound = walk_wall_sfx
+		Utilties.SFX.FOUND_EXIT:
+			sound = found_exit_sfx
 		
 		Utilties.SFX.DIED:
 			sound = died_sfx
@@ -151,7 +153,6 @@ func _request_sfx(sound: AudioStream, pitch: float, enum_:= Utilties.SFX.NA) -> 
 	if target_player.is_inside_tree():
 		target_player.play()
 
-
 static func request_music(music_type: Utilties.MUSIC) -> void:
 	if _current_manager:
 		_current_manager._request_music(music_type)
@@ -174,7 +175,6 @@ func _request_music(music_type: Utilties.MUSIC) -> void:
 		1.0
 		)
 		current_tween.tween_callback(current.stop)
-		pass
 	var next_tween := get_tree().create_tween()
 	next.set_volume_db(-80.0)
 	next.play()
