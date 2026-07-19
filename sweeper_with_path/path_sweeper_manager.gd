@@ -6,7 +6,7 @@ class_name PathSweeperManager extends Node
 @onready var score_holder: ScoreHolder_PathSweeper = %ScoreHolder
 @onready var path_sweeper_control_manager: PathSweeperControlManager = %PathSweeperControlManager
 @onready var game_over_screen: PanelContainer = %GameOverScreen
-
+@onready var label_score: Label = %LabelScore
 
 @export var _puzzle: PathSweeper
 
@@ -52,7 +52,9 @@ func _on_new() -> void: if _puzzle:
 	SoundManager.request_music(Utilties.MUSIC.GAME_ACTIVE)
 	_puzzle.new_game() 
 
-func _on_game_over(_value: int) -> void: game_over_screen.show()
+func _on_game_over(_value: int) -> void: 
+	label_score.set_text("Score: {}".format([_puzzle.get_score()], '{}'))
+	game_over_screen.show()
 
 func _on_press_action(mouse_mask: int) -> void:
 	var pos = tile_manager.get_mouse_cell()

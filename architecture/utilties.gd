@@ -3,7 +3,7 @@ class_name Utilties extends RefCounted
 const COLOR_PATH_OUTER_CELL := Color(217/255.0, 160/255.0, 102/255.0, 0.5) # Color(0.9, 0.541, 0.369, 0.5)
 const COLOR_PATH_CENTER_CELL := COLOR_PATH_OUTER_CELL # Color(.3,.3,.3,.5)
 
-enum Popups {NA = 0, SOUND_SETTINGS = 1, HELP = 2}
+enum Popups {NA = 0, SOUND_SETTINGS = 1, HELP = 2, ABOUT = 3}
 
 enum MUSIC { NA = 0, GAME_ACTIVE = 1, GAME_OVER = 2 }
 

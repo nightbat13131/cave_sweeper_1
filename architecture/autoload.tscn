@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cp5difih1cr7j" path="res://ui/icon_music.tres" id="5_neqif"]
 [ext_resource type="Texture2D" uid="uid://c58vep2gm1ftu" path="res://ui/icon_help.tres" id="6_bx4ks"]
 [ext_resource type="Texture2D" uid="uid://t5ytw5gr5mly" path="res://ui/icon_close.tres" id="7_neqif"]
+[ext_resource type="Texture2D" uid="uid://lgtn18sbrvei" path="res://ui/icon_about.tres" id="9_3bbcg"]
 [ext_resource type="Script" uid="uid://bnlnrpei8r0dj" path="res://architecture/settings/popup_button.gd" id="9_adebt"]
 [ext_resource type="Script" uid="uid://dsqrrpi6uclrs" path="res://architecture/sound_manager.gd" id="10_sn41r"]
 [ext_resource type="AudioStream" uid="uid://gw8uuemh53n5" path="res://assets/audio/sfx/ui/kenney_click1.ogg" id="11_7gcew"]
@@ -33,6 +34,15 @@
 [ext_resource type="AudioStream" uid="uid://b2va6002gpl5j" path="res://assets/audio/sfx/game/rubber_duck_sfx100v2_items_01.ogg" id="25_1cfn8"]
 [ext_resource type="AudioStream" uid="uid://fq8wankypj6y" path="res://assets/audio/sfx/game/rubberduck_alien_08.ogg" id="26_y0pg3"]
 [ext_resource type="AudioStream" uid="uid://dey05xfpl1jc1" path="res://assets/audio/sfx/game/rubberduck_alien_07.ogg" id="27_y0pg3"]
+[ext_resource type="Texture2D" uid="uid://3gb35c42txoh" path="res://ui/icon_walk.tres" id="35_2wckl"]
+[ext_resource type="Texture2D" uid="uid://bcgylh47cvf7o" path="res://ui/icon_cave_wall.tres" id="35_sgrck"]
+[ext_resource type="Texture2D" uid="uid://cvowgg3xij4tl" path="res://ui/icon_cave_down.tres" id="36_2wckl"]
+[ext_resource type="Texture2D" uid="uid://cqxtirdg1tgf" path="res://ui/icon_heart.tres" id="37_mgax5"]
+[ext_resource type="Texture2D" uid="uid://by872dcwvmu5m" path="res://ui/icon_one.tres" id="38_1ss0t"]
+[ext_resource type="Texture2D" uid="uid://jctf4nr5c7dh" path="res://ui/icon_monster.tres" id="39_n4a3a"]
+[ext_resource type="Texture2D" uid="uid://blo1eey7am57o" path="res://ui/icon_flag_danger.tres" id="40_lui53"]
+[ext_resource type="Texture2D" uid="uid://dw036jufvu3hr" path="res://ui/icon_repel.tres" id="41_jjivu"]
+[ext_resource type="Texture2D" uid="uid://d1p6e3jlk0tqr" path="res://ui/icon_loot.tres" id="42_6b4tq"]
 
 [node name="Overlay" type="Node" unique_id=972770045]
 script = ExtResource("1_6gj0w")
@@ -114,6 +124,18 @@ icon_alignment = 1
 script = ExtResource("9_adebt")
 popup_type = 2
 
+[node name="InfoTabButton" type="Button" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=765490951]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_type_variation = &"TabButton"
+toggle_mode = true
+button_group = ExtResource("3_g1yyb")
+icon = ExtResource("9_3bbcg")
+icon_alignment = 1
+script = ExtResource("9_adebt")
+popup_type = 3
+
 [node name="SpaceBig" type="Control" parent="Popups/Popups/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=511262149]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
@@ -139,8 +161,13 @@ custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Space2" type="Control" parent="Popups/Popups/VBoxContainer2/VBoxContainer" unique_id=1036078320]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
 [node name="SoundSection" type="PanelContainer" parent="Popups/Popups/VBoxContainer2" unique_id=1554852027]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -263,6 +290,150 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Popups/Popups/VBoxContainer2/HowToPlaySection" unique_id=1256804394]
+[node name="MarginContainer" type="MarginContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection" unique_id=1966730443]
 layout_mode = 2
-text = "tesxt"
+theme_type_variation = &"MaringPopup"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer" unique_id=2006821405]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer" unique_id=1724112564]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2048000609]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1844224160]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("35_2wckl")
+stretch_mode = 2
+
+[node name="MarginContainer" type="CenterContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=575301886]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=2068672008]
+layout_mode = 2
+texture = ExtResource("35_sgrck")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=491874929]
+layout_mode = 2
+texture = ExtResource("36_2wckl")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1256804394]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Expore the cave, gather loot, and go deeper to score big before the monsters overcome you. "
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1546943039]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("37_mgax5")
+stretch_mode = 2
+
+[node name="TextureRect" type="HSeparator" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer" unique_id=838356811]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer" unique_id=1901443712]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=144840698]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("38_1ss0t")
+stretch_mode = 2
+
+[node name="Label2" type="Label" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=71147117]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Number on the cell shows how many monsters are adjacent to the cell."
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=430291700]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("39_n4a3a")
+
+[node name="TextureRect2" type="HSeparator" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer" unique_id=240565648]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer" unique_id=299801799]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=359234901]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("40_lui53")
+
+[node name="Label3" type="Label" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=167023592]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mark cells as dangerous."
+autowrap_mode = 2
+
+[node name="TextureRect3" type="HSeparator" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer" unique_id=404097143]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer" unique_id=1458929510]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=294951266]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("41_jjivu")
+
+[node name="Label3" type="Label" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1748447860]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spray monsters with repelent to chase them off and get their loot."
+autowrap_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=167172402]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("42_6b4tq")
+
+[node name="AboutSection" type="PanelContainer" parent="Popups/Popups/VBoxContainer2" unique_id=776316661]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Popups/Popups/VBoxContainer2/AboutSection" unique_id=634521997]
+layout_mode = 2
+theme_type_variation = &"MaringPopup"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popups/Popups/VBoxContainer2/AboutSection/MarginContainer" unique_id=1829929659]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Popups/Popups/VBoxContainer2/AboutSection/MarginContainer/VBoxContainer" unique_id=481604732]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Cave Sweeper
+A Game by Nicole Haynie"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Popups/Popups/VBoxContainer2/AboutSection/MarginContainer/VBoxContainer" unique_id=1304338764]
+layout_mode = 2
+text = "
+Tools: Godot 4 and Asprite
+Music:  Nuclear Cave from Hazmat Harry CC0
+SFX: 
+Varous CCO sounds sourced from opengameart.org from creators TinyWorlds, OwlishMedia, Orsi, and RubberDuck
+Some visual and SFX assets from  Kenney Vleugels (Kenney.nl) at www.kenney.nl under the License: (Creative Commons Zero, CC0)"
+autowrap_mode = 2

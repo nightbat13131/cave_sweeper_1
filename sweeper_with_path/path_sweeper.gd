@@ -64,6 +64,8 @@ func change_health(delta: int) -> void:
 
 func get_depth() -> int: return _depth
 
+func get_score() -> int: return  (get_depth() * 100) + (get_loot_count() * 50) + (get_spray_count() * -5)
+
 func _get_results() -> Utilties.Results:
 	if _lives <= 0: # 0 can take one more hit
 		return Utilties.Results.LOSS

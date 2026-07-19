@@ -23,7 +23,7 @@ func _on_puzzle_change() -> void:
 		hide()
 		return
 	label_depth.set_text("Depth: {}".format([_puzzle.get_depth()], "{}"))
-	label_loot.set_text("Loot: {}".format([_puzzle.get_loot_count()], "{}"))
+	label_loot.set_text("{}".format([_puzzle.get_loot_count()], "{}"))
 	var hp := _puzzle.get_health()
 	for index_h in _lives.size():
 		if hp-1 >= index_h:

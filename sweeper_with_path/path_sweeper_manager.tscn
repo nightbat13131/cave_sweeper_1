@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://3gb35c42txoh" path="res://ui/icon_walk.tres" id="11_ng3e6"]
 [ext_resource type="Script" uid="uid://bmekp6xix6xnb" path="res://ui/path_sweeper_control_manager.gd" id="11_ppvb5"]
 [ext_resource type="Texture2D" uid="uid://dw036jufvu3hr" path="res://ui/icon_repel.tres" id="13_2otii"]
+[ext_resource type="Texture2D" uid="uid://d1p6e3jlk0tqr" path="res://ui/icon_loot.tres" id="13_ivpca"]
+[ext_resource type="Texture2D" uid="uid://cnhbhrp1fpt34" path="res://ui/icon_x.tres" id="14_6xpkf"]
 [ext_resource type="Texture2D" uid="uid://blo1eey7am57o" path="res://ui/icon_flag_danger.tres" id="14_ivpca"]
 [ext_resource type="Texture2D" uid="uid://xqhbb8ap6ii1" path="res://ui/icon_flag_safe.tres" id="15_6xpkf"]
 [ext_resource type="Texture2D" uid="uid://dwsq4dji3yuf6" path="res://assets/images/sprite_tileset.png" id="18_ng3e6"]
@@ -74,7 +76,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_ng3e6")
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=142520523]
+[node name="PanelContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=185329631]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/PanelContainer2" unique_id=1737550183]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer2" unique_id=632038211]
@@ -148,10 +154,20 @@ text = "Depth: 0"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1895325331]
+layout_mode = 2
+texture = ExtResource("13_ivpca")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1456685358]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("14_6xpkf")
+stretch_mode = 2
+
 [node name="LabelLoot" type="Label" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1423696547]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Loot: 0"
+text = "0"
 
 [node name="HSeparator5" type="Control" parent="HBoxContainer/PanelContainer2/VBoxContainer/ScoreHolder" unique_id=1383826830]
 layout_mode = 2
@@ -169,11 +185,12 @@ size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=816201757]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/PanelContainer" unique_id=420909133]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 8
 
 [node name="Control2" type="Control" parent="HBoxContainer/PanelContainer/HBoxContainer2" unique_id=1638936348]
 layout_mode = 2
@@ -253,6 +270,10 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOverScreen" unique_id=672231275]
 layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/MarginContainer" unique_id=537429274]
 layout_mode = 2
@@ -263,6 +284,11 @@ alignment = 1
 [node name="Label" type="Label" parent="GameOverScreen/MarginContainer/VBoxContainer" unique_id=1364174007]
 layout_mode = 2
 text = "Game Over"
+
+[node name="LabelScore" type="Label" parent="GameOverScreen/MarginContainer/VBoxContainer" unique_id=239210210]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Score: "
 
 [node name="ButtonNew" type="Button" parent="GameOverScreen/MarginContainer/VBoxContainer" unique_id=1432014774]
 unique_name_in_owner = true

@@ -2,9 +2,12 @@ class_name PopupManager extends Control
 
 @onready var sound_section: PanelContainer = %SoundSection
 @onready var how_to_play_section: PanelContainer = %HowToPlaySection
+@onready var about_section: PanelContainer = %AboutSection
 
 @onready var sound_tab: PopupButton = %SoundTab
 @onready var help_tab_button: PopupButton = %HelpTabButton
+@onready var info_tab_button: PopupButton = %InfoTabButton
+
 
 static var _instance : PopupManager
 
@@ -32,6 +35,10 @@ static func request_popup(popup_type: Utilties.Popups, silent := false) -> void:
 	
 	_instance.how_to_play_section.set_visible(popup_type == Utilties.Popups.HELP)
 	_instance.help_tab_button.set_pressed_no_signal(popup_type == Utilties.Popups.HELP)
+	
+	_instance.about_section.set_visible(popup_type == Utilties.Popups.ABOUT)
+	_instance.info_tab_button.set_pressed_no_signal(popup_type == Utilties.Popups.ABOUT)
+
 
 func game_over() -> void:
 	pass

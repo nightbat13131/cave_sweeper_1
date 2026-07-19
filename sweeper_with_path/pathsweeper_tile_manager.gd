@@ -49,7 +49,7 @@ var _current_cell := Vector2i.ONE * -1
 var _puzzle: PathSweeper
 
 func _ready() -> void:
-	set_z_index(100)
+	set_z_index(1)
 	_init_tilemaps()
 
 func set_puzzle(puzzle: PathSweeper) -> void:

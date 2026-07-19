@@ -26,6 +26,7 @@ atlas = SubResource("CompressedTexture2D_fkkbh")
 region = Rect2(18, 64, 12, 16)
 
 [node name="PathSweeperControlSelector" type="MarginContainer" unique_id=631055010]
+theme_override_constants/margin_bottom = 0
 script = ExtResource("1_ggttl")
 
 [node name="Button" type="Button" parent="." unique_id=680398274]
@@ -41,6 +42,7 @@ _middle = true
 _right = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=284241097]
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
@@ -55,11 +57,6 @@ mouse_filter = 2
 texture = SubResource("AtlasTexture_05s3y")
 stretch_mode = 4
 
-[node name="Control_mid2" type="Control" parent="HBoxContainer" unique_id=41810054]
-custom_minimum_size = Vector2(0, 28)
-layout_mode = 2
-mouse_filter = 2
-
 [node name="TextureRect_Mid" type="TextureRect" parent="HBoxContainer" unique_id=376168581]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(4, 0)
@@ -69,11 +66,6 @@ size_flags_vertical = 8
 mouse_filter = 2
 texture = SubResource("AtlasTexture_ucl1t")
 stretch_mode = 4
-
-[node name="Control_mid3" type="Control" parent="HBoxContainer" unique_id=1651149540]
-custom_minimum_size = Vector2(0, 28)
-layout_mode = 2
-mouse_filter = 2
 
 [node name="TextureRect_Right" type="TextureRect" parent="HBoxContainer" unique_id=1271293793]
 unique_name_in_owner = true

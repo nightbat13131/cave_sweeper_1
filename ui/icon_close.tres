@@ -5,4 +5,4 @@ load_path = "res://.godot/imported/sprite_tileset.png-b56a207edbbf0c3a9bae9ed491
 
 [resource]
 atlas = SubResource("CompressedTexture2D_v3ko5")
-region = Rect2(1, 209, 14, 14)
+region = Rect2(0, 208, 16, 16)
