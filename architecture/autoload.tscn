@@ -286,7 +286,6 @@ value = 0.6
 
 [node name="HowToPlaySection" type="PanelContainer" parent="Popups/Popups/VBoxContainer2" unique_id=803918357]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -327,7 +326,7 @@ stretch_mode = 2
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Expore the cave, gather loot, and go deeper to score big before the monsters overcome you. "
+text = "Explore the cave, gather loot, and go deeper to score big before the monsters overcome you. "
 autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1546943039]
@@ -400,7 +399,7 @@ texture = ExtResource("41_jjivu")
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Spray monsters with repelent to chase them off and get their loot."
+text = "Spray monsters with repellent to chase them off and get their loot."
 autowrap_mode = 2
 
 [node name="TextureRect4" type="TextureRect" parent="Popups/Popups/VBoxContainer2/HowToPlaySection/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=167172402]
@@ -411,6 +410,7 @@ texture = ExtResource("42_6b4tq")
 
 [node name="AboutSection" type="PanelContainer" parent="Popups/Popups/VBoxContainer2" unique_id=776316661]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
